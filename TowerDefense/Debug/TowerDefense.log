@@ -1,0 +1,13 @@
+﻿Der Buildvorgang wurde am 28.11.2014 14:09:53 gestartet.
+     1>Projekt "c:\Users\Eric\documents\visual studio 2013\Projects\TowerDefense\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>ClCompile:
+         E:\Programme\VC\bin\CL.exe /c /I"C:\Users\Eric\Documents\Visual Studio 2013\Projects\TowerDefense\smfl2.1vs2012\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         Main.cpp
+       Link:
+         E:\Programme\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\TowerDefense\smfl2.1vs2012\lib\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.lib" /MACHINE:X86 Debug\Main.obj
+         TowerDefense.vcxproj -> c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.exe
+     1>Die Erstellung des Projekts "c:\Users\Eric\documents\visual studio 2013\Projects\TowerDefense\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
+
+Build erfolgreich.
+
+Verstrichene Zeit 00:00:01.24
