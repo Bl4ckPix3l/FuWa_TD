@@ -1,13 +1,23 @@
-﻿Der Buildvorgang wurde am 28.11.2014 14:09:53 gestartet.
-     1>Projekt "c:\Users\Eric\documents\visual studio 2013\Projects\TowerDefense\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
+﻿Der Buildvorgang wurde am 03.02.2015 20:05:01 gestartet.
+     1>Projekt "D:\FH\Medienprogrammieren\FuWa_TD\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
      1>ClCompile:
-         E:\Programme\VC\bin\CL.exe /c /I"C:\Users\Eric\Documents\Visual Studio 2013\Projects\TowerDefense\smfl2.1vs2012\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
-         Main.cpp
+         D:\FH\Visual Studio 2013\VC\bin\CL.exe /c /I"D:\FH\Medienprogrammieren\SFML einrichten\SFML-2.1 VS12\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Map.cpp
+         Map.cpp
+     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(133): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(142): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(165): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(168): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
        Link:
-         E:\Programme\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\TowerDefense\smfl2.1vs2012\lib\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.lib" /MACHINE:X86 Debug\Main.obj
-         TowerDefense.vcxproj -> c:\users\eric\documents\visual studio 2013\Projects\TowerDefense\Debug\TowerDefense.exe
-     1>Die Erstellung des Projekts "c:\Users\Eric\documents\visual studio 2013\Projects\TowerDefense\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
+         D:\FH\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\FH\Medienprogrammieren\SFML einrichten\SFML-2.1 VS12\lib\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.lib" /MACHINE:X86 Debug\BodenGegner.obj
+         Debug\Einheit.obj
+         Debug\Gegner.obj
+         Debug\Main.obj
+         Debug\Map.obj
+         Debug\Position.obj
+         Debug\Spiel.obj
+         TowerDefense.vcxproj -> D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.exe
+     1>Die Erstellung des Projekts "D:\FH\Medienprogrammieren\FuWa_TD\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:01.24
+Verstrichene Zeit 00:00:03.35
