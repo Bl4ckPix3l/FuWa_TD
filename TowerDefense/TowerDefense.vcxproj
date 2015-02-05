@@ -41,13 +41,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Torsten\Desktop\SFML-2.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Torsten\Desktop\SFML-2.2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Torsten\Desktop\SFML-2.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Torsten\Desktop\SFML-2.2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -56,7 +56,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\TowerDefense\Debug;C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Torsten\Desktop\SFML-2.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
