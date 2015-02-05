@@ -170,13 +170,7 @@ int screen_4::Run(sf::RenderWindow &app)
 	txtTime.setColor(getColor("default"));
 	txtTime.setPosition({ 800.f, progressHeight / 2.f });
 
-	//Spiel s;
-	//s.run();
-
 	karte = new Map("map.txt");
-	//gegner1 = new BodenGegner();
-	//gegner.push_back(gegner1);
-	//gegner1->spawn(karte->getStartPosition());
 	
 	turm1 = new Turm();
 	turm1->setAngriff(10);
@@ -302,9 +296,6 @@ int screen_4::Run(sf::RenderWindow &app)
 					//i = 0;
 				}
 			}
-
-		
-
 	}
 
 	löschePositionen();
