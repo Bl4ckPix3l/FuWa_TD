@@ -1,7 +1,7 @@
 #include <iostream>
 #include "cScreen.hpp"
 #include "screen_4.hpp"
-#include "Spiel.h"
+
 
 #define POSGRÖßE 32
 
@@ -166,16 +166,18 @@ int screen_4::Run(sf::RenderWindow &app)
 	//s.run();
 
 	karte = new Map("map.txt");
-	//karte = *m1;
-	gegner1.spawn(karte->getStartPosition());
-	turm1.setRange(2);
-	Position *test = karte->getPositionen().at(5)[7];
-	Position *test2 = karte->getStartPosition();
-	turm1.spawn(karte->getPositionen()[5][7]);
-	turm1.berechneRangeFelder(karte->getPositionen());
-	türme.push_back(turm1);
-
+	gegner1 = new BodenGegner();
+	gegner1->setLeben(40);
+	gegner.push_back(gegner1);
+	gegner1->spawn(karte->getStartPosition());
 	
+	turm1 = new Turm();
+	turm1->setAngriff(10);
+	türme.push_back(turm1);
+	turm1->setRange(2);
+
+	turm1->spawn(karte->getPositionen()[5][7]);
+	turm1->berechneRangeFelder(karte->getPositionen());
 
 	int i = 0;
 
@@ -239,10 +241,13 @@ int screen_4::Run(sf::RenderWindow &app)
 		}
 
 		//app.draw(Rectangle);
-		
-		if (karte->getPath().size() != 0)
+
+		if (gegner.size() > 0)
 		{
-			gegner1.move(karte->getPath()[i]);
+			if (karte->getPath().size() != 0)
+			{
+				gegner1->move(karte->getPath()[i]);
+			}
 		}
 		//std::vector<Einheit*> test = gegner1.isInRange(&türme);
 
@@ -255,12 +260,21 @@ int screen_4::Run(sf::RenderWindow &app)
 		app.draw(goldText);
 		app.draw(txtTime);
 
+		if (gegner.size()>0)
+			drawGegner(&app);
 		app.display();
-
-		/*
-		if (gegner1.isInRange(&türme).size() > 0)
+		std::vector<Einheit*> angreiffendeEinheiten;
+		if (gegner.size()>0)
+			 angreiffendeEinheiten = gegner1->isInRange(&türme);
+		if (angreiffendeEinheiten.size() > 0)
 		{
-			//gegner1.spawn(karte->getPositionen()[0][0]);
+			gegner1->spawn(karte->getPositionen()[0][0]);
+			for (int j = 0; j < angreiffendeEinheiten.size();j++)
+			{ 
+				angreiffendeEinheiten[j]->angriff(gegner1);
+				löscheToteEinheiten();
+			}
+
 			i = 0;
 		}
 		*/
@@ -308,7 +322,6 @@ void screen_4::drawGegner(sf::RenderWindow *app)
 	tex.loadFromFile("gegner.png");
 	gegnerSprite.setTexture(tex);
 	app->draw(gegnerSprite);
-
 }
 
 void screen_4::drawTürme(sf::RenderWindow *app)
@@ -329,5 +342,45 @@ void screen_4::löschePositionen()
 			delete karte->getPositionen()[i][j];
 			karte->getPositionen()[i][j] = 0;
 		}
+	}
+}
+
+void screen_4::löscheToteEinheiten(){
+	//lösche türme
+	for (int i = 0; i < türme.size() - 1; i++)
+	{
+		if (türme[i]->getTot())
+		{
+			delete türme[i];
+			türme[i] = 0;
+			türme.erase(türme.begin() + i);
+		}
+	}
+	//lösche gegner	
+	for (int i = 0; i < gegner.size(); i++)
+	{
+		if (gegner[i]->getTot())
+		{
+			delete gegner[i];
+			gegner[i] = 0;
+			gegner.erase(gegner.begin()+i);
+		}
+	}
+}
+
+void screen_4::löscheAlleEinheiten(){
+	//lösche türme
+	for (int i = 0; i < türme.size() - 1; i++)
+	{
+		delete türme[i];
+		türme[i] = 0;
+		türme.erase(türme.begin() + i);
+	}
+	//lösche gegner	
+	for (int i = 0; i < gegner.size() - 1; i++)
+	{
+		delete gegner[i];
+		gegner[i] = 0;
+		gegner.erase(gegner.begin() + i);
 	}
 }

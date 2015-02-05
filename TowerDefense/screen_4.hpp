@@ -46,15 +46,16 @@ private:
 	sf::Sprite gegnerSprite;
 	sf::Sprite turmSprite;
 	sf::RenderWindow *window;
-	std::vector<Einheit> türme;
-	std::vector<Einheit> gegner;
-	BodenGegner gegner1;
-	Turm turm1;
-	//void drawAll();
+	std::vector<Einheit*> türme;
+	std::vector<Einheit*> gegner;
+	BodenGegner *gegner1;
+	Turm *turm1;
 	void drawMap(sf::RenderWindow *app);
 	void drawGegner(sf::RenderWindow *app);
 	void drawTürme(sf::RenderWindow *app);
 	void löschePositionen();
+	void löscheToteEinheiten();
+	void löscheAlleEinheiten();
 
 
 public:
@@ -73,58 +74,3 @@ public:
 	void decreaseGold(int value);
 	bool isGoldAvailable(int value);
 };
-
-/*
-screen_4::screen_4(void)
-{
-
-}
-
-int screen_4::Run(sf::RenderWindow &App)
-{
-	sf::Event Event;
-
-
-
-	bool Running = true;
-
-	while (Running)
-	{
-		//Verifying events
-		while (App.pollEvent(Event))
-		{
-			// Window closed
-			if (Event.type == sf::Event::Closed)
-			{
-				return (-1);
-			}
-			//Key pressed
-			if (Event.type == sf::Event::KeyPressed)
-			{
-				if (Event.key.code == sf::Keyboard::Escape){
-					return	0;
-				}
-			}
-
-			if (Event.type == sf::Event::MouseMoved){
-				
-			}
-
-			if (Event.type == sf::Event::MouseButtonPressed)
-			{
-				
-			}
-
-		}
-
-		//Clearing screen
-		App.clear(sf::Color(0, 0, 0, 0));
-
-
-		//App.draw(Rectangle);
-		App.display();
-	}
-
-	//Never reaching this point normally, but just in case, exit the application
-	return -1;
-}*/
