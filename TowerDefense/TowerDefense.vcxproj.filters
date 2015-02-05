@@ -51,9 +51,6 @@
     <ClCompile Include="Position.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Spiel.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Turm.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Spiel.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Turm.h">
