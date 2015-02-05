@@ -43,8 +43,8 @@ int screen_0::Run(sf::RenderWindow &App)
 	sf::Text menuItemSettings;
 	sf::RectangleShape button;
 
-	std::map<std::string, std::string> menuItems;
-	std::vector<sf::Text> menuListText;
+	std::vector<std::string> menuItems;
+	std::vector<sf::Text*> menuListText;
 	std::vector<sf::RectangleShape> menuListButton;
 
 	if (!Font.loadFromFile("verdanab.ttf")){
@@ -52,9 +52,10 @@ int screen_0::Run(sf::RenderWindow &App)
 		return (-1);
 	}
 
-	menuItems.insert(std::make_pair("3", "Beenden"));
-	menuItems.insert(std::make_pair("2", "Einstellungen"));
-	menuItems.insert(std::make_pair("1", "Spielen"));
+	menuItems.push_back("Spielen");
+	menuItems.push_back("Einstellungen");
+	menuItems.push_back("Beenden");
+	
 
 	playMainMusic();
 
@@ -62,12 +63,12 @@ int screen_0::Run(sf::RenderWindow &App)
 	float menuSpace = 60.f;
 
 	//std::map<std::string, std::string>::iterator curr, end;
-	for (std::map<std::string, std::string>::iterator curr = menuItems.begin(); curr != menuItems.end(); ++curr){
-		sf::Text MenuTest = sf::Text();
-		MenuTest.setFont(Font);
-		MenuTest.setCharacterSize(20);
-		MenuTest.setString(curr->second);
-		MenuTest.setColor(sf::Color(208, 181, 126));
+	for (int i = 0; i < menuItems.size(); i++){
+		sf::Text* MenuTest = new sf::Text();
+		MenuTest->setFont(Font);
+		MenuTest->setCharacterSize(20);
+		MenuTest->setString(menuItems[i]);
+		MenuTest->setColor(sf::Color(208, 181, 126));
 		//setTextCenter(MenuTest, menuMarginTop);
 		menuListText.push_back(MenuTest);
 
@@ -180,23 +181,23 @@ int screen_0::Run(sf::RenderWindow &App)
 
 		float menuMarginTop = 220.f;
 		float menuSpace = 60.f;
-		int menuItemCount = 0;
 
 		// menu items zeichen
-		for (std::vector<sf::Text>::iterator i = menuListText.begin(); i != menuListText.end(); ++i) {
-			setTextCenter(*i, menuMarginTop);
-			if (menuItemCount == menu){
-				i->setColor(sf::Color(255, 0, 0, 255));
+		
+		for (int i = 0; i < menuListText.size(); i++){
+		//for (std::vector<sf::Text*>::iterator i = menuListText.begin(); i != menuListText.end(); ++i) {
+			setTextCenter(*menuListText[i], menuMarginTop);
+			if (i == menu){
+				menuListText[i]->setColor(sf::Color(255, 0, 0, 255));
 			}
 			else {
-				i->setColor(sf::Color(255, 255, 255, 255));
+				menuListText[i]->setColor(sf::Color(255, 255, 255, 255));
 			}
 
-			App.draw(menuListText[menuItemCount]);
-			App.draw(menuListButton[menuItemCount]);
+			App.draw(*menuListText[i]);
+			App.draw(menuListButton[i]);
 
 			menuMarginTop = menuMarginTop + menuSpace;
-			menuItemCount++;
 		}
 
 		if (alpha == alpha_max)

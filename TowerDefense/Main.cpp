@@ -3,8 +3,6 @@
 #include <iostream>
 #include "screens.hpp"
 
-
-
 int main()
 {
 	//Applications variables
@@ -18,6 +16,8 @@ int main()
 	App.setMouseCursorVisible(true);
 
 	//Screens preparations
+	
+	
 	screen_0 s0;
 	screen_1 s1;
 	screen_2 s2;
@@ -28,8 +28,8 @@ int main()
 	Screens.push_back(&s2);
 	Screens.push_back(&s3);
 	Screens.push_back(&s4);
-
-	//Main loop
+	
+	
 	while (screen >= 0)
 	{
 		screen = Screens[screen]->Run(App);
