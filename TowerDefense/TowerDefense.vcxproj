@@ -86,23 +86,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BodenGegner.cpp" />
     <ClCompile Include="cScreen.cpp" />
+    <ClCompile Include="Einheit.cpp" />
+    <ClCompile Include="Gegner.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Position.cpp" />
     <ClCompile Include="screen_0.cpp" />
     <ClCompile Include="screen_1.cpp" />
     <ClCompile Include="screen_2.cpp" />
     <ClCompile Include="screen_3.cpp" />
     <ClCompile Include="screen_4.cpp" />
+    <ClCompile Include="Spiel.cpp" />
+    <ClCompile Include="Turm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BodenGegner.h" />
     <ClInclude Include="cScreen.hpp" />
+    <ClInclude Include="Einheit.h" />
+    <ClInclude Include="Gegner.h" />
     <ClInclude Include="globals.hpp" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="screens.hpp" />
     <ClInclude Include="screen_0.hpp" />
     <ClInclude Include="screen_1.hpp" />
     <ClInclude Include="screen_2.hpp" />
     <ClInclude Include="screen_3.hpp" />
     <ClInclude Include="screen_4.hpp" />
+    <ClInclude Include="Spiel.h" />
+    <ClInclude Include="Turm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

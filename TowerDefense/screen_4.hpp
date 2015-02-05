@@ -1,7 +1,18 @@
-#include <iostream>
-#include "cScreen.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <cctype>
+#include <stdio.h>
+#include <vector>
+
+#include "cScreen.hpp"
+#include "BodenGegner.h"
+#include "Map.h"
+#include "Turm.h"
+#include "Einheit.h"
+#include "globals.hpp"
 
 class screen_4 : public cScreen
 {
@@ -25,6 +36,23 @@ private:
 	sf::Text lifeText;
 	sf::Text goldText;
 	sf::Clock waveClock;
+
+
+	Map *karte;
+	sf::Sprite feldSprite;
+	sf::Sprite gegnerSprite;
+	sf::Sprite turmSprite;
+	sf::RenderWindow *window;
+	std::vector<Einheit> türme;
+	std::vector<Einheit> gegner;
+	BodenGegner gegner1;
+	Turm turm1;
+	//void drawAll();
+	void drawMap(sf::RenderWindow *app);
+	void drawGegner(sf::RenderWindow *app);
+	void drawTürme(sf::RenderWindow *app);
+	void löschePositionen();
+
 
 public:
 	screen_4(void);
