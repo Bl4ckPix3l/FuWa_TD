@@ -9,17 +9,16 @@ Position::~Position()
 {
 }
 
-void Position::berechneWert(Position ziel)
+void Position::berechneWert(Position *ziel)
 {
-	Position pVater = *vater;
-	entfernungStart = pVater.getEntfernungStart() + 1;
+	entfernungStart = vater->getEntfernungStart() + 1;
 	double test = vater->getEntfernungStart();
 	wert = berechneAbstand(ziel) + entfernungStart;
 }
 
-double Position::berechneAbstand(Position ziel)
+double Position::berechneAbstand(Position *ziel)
 {
-	double ergebnis = sqrt(pow(ziel.getXCord()-xCord, 2) + pow(ziel.getYCord() - yCord, 2));
+	double ergebnis = sqrt(pow(ziel->getXCord() - xCord, 2) + pow(ziel->getYCord() - yCord, 2));
 	return ergebnis;
 }
 
@@ -52,10 +51,9 @@ double Position::getEntfernungStart()
 {
 	return entfernungStart;
 }
-Position Position::getVater()
+Position *Position::getVater()
 {
-	Position pVater = *vater;
-	return pVater;
+	return vater;
 }
 void Position::setBebaubar(bool pBebaubar)
 {

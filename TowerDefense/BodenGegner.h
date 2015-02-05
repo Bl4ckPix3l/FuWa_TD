@@ -7,13 +7,13 @@
 class BodenGegner:public Gegner
 {
 private:
-	std::vector<Position> queue;
-	void berechneWeg(Position zielPos);
-	void initWegfindung(Map karte);
-	double berechneAbstand(Position startPos, Position zielPos);
+	std::vector<Position*> queue;
+	void berechneWeg(Position *zielPos);
+	void initWegfindung(Map *karte);
+	double berechneAbstand(Position *startPos, Position *zielPos);
 public:
 	BodenGegner();
 	~BodenGegner();
-	void move(Position zielPosition);
+	void move(Position *zielPosition);
 };
 

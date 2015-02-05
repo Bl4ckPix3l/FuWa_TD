@@ -1,23 +1,21 @@
-﻿Der Buildvorgang wurde am 03.02.2015 20:05:01 gestartet.
-     1>Projekt "D:\FH\Medienprogrammieren\FuWa_TD\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
+﻿Der Buildvorgang wurde am 05.02.2015 14:31:46 gestartet.
+     1>Projekt "C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
      1>ClCompile:
-         D:\FH\Visual Studio 2013\VC\bin\CL.exe /c /I"D:\FH\Medienprogrammieren\SFML einrichten\SFML-2.1 VS12\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Map.cpp
-         Map.cpp
-     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(133): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(142): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(165): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>d:\fh\medienprogrammieren\fuwa_td\towerdefense\map.cpp(168): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Torsten\Desktop\SFML-2.2\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BodenGegner.cpp
+         BodenGegner.cpp
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\gegner.h(8): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
        Link:
-         D:\FH\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\FH\Medienprogrammieren\SFML einrichten\SFML-2.1 VS12\lib\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.lib" /MACHINE:X86 Debug\BodenGegner.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Torsten\Documents\Visual Studio 2013\Projects\Projekt3\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.lib" /MACHINE:X86 Debug\BodenGegner.obj
          Debug\Einheit.obj
          Debug\Gegner.obj
          Debug\Main.obj
          Debug\Map.obj
          Debug\Position.obj
          Debug\Spiel.obj
-         TowerDefense.vcxproj -> D:\FH\Medienprogrammieren\FuWa_TD\Debug\TowerDefense.exe
-     1>Die Erstellung des Projekts "D:\FH\Medienprogrammieren\FuWa_TD\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
+         Debug\Turm.obj
+         TowerDefense.vcxproj -> C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.exe
+     1>Die Erstellung des Projekts "C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:03.35
+Verstrichene Zeit 00:00:03.50

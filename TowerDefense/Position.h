@@ -9,7 +9,7 @@ private:
 	int xCord;
 	int yCord;
 	int size;
-	double berechneAbstand(Position ziel);
+	double berechneAbstand(Position *ziel);
 
 	//wegfindung
 	Position *vater;
@@ -20,14 +20,14 @@ private:
 public:
 	Position();
 	~Position();
-	void berechneWert(Position ziel);
+	void berechneWert(Position *ziel);
 	bool getBebaubar();
 	int getXCord();
 	int getYCord();
 	int getSize();
 	double getWert();
 	int getStatus();
-	Position getVater();
+	Position *getVater();
 	double getEntfernungStart();
 	void setBebaubar(bool pBebaubar);
 	void setXCord(int pXCord);
