@@ -26,10 +26,6 @@ cScreen::cScreen(){
 
 	cScreen::mainFont.loadFromFile("verdanab.ttf");
 
-	/*if (!mainFont.loadFromFile("verdanab.ttf")){
-		std::cerr << "Error loading verdanab.ttf" << std::endl;
-	}*/
-
 	initSounds();
 	initColors();
 }
@@ -156,11 +152,6 @@ int cScreen::onButtonHover(sf::Event Event, std::vector<sf::RectangleShape>  men
 
 		if (moveX > leftEdge && moveX < rightEdge && moveY > topEdge && moveY < bottomEdge){
 			std::cout << "button entered" << count << " \n";
-			/*if (menu != count){
-			playButtonSound();
-			}
-			menu = count;
-			*/
 			btnEnterd = true;
 
 			return count;

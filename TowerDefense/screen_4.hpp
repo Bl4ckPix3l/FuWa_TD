@@ -17,6 +17,9 @@
 class screen_4 : public cScreen
 {
 private:
+
+	const float headerHeight = 60.f;
+
 	int waves = 30;
 	int waveCount = 0;
 	int waveTimeEnd = 1500;
