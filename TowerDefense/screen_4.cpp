@@ -170,7 +170,6 @@ int screen_4::Run(sf::RenderWindow &app)
 	txtTime.setColor(getColor("default"));
 	txtTime.setPosition({ 800.f, progressHeight / 2.f });
 
-<<<<<<< HEAD
 	sf::Text gameOver;
 	gameOver.setFont(font);
 	gameOver.setCharacterSize(64);
@@ -182,8 +181,8 @@ int screen_4::Run(sf::RenderWindow &app)
 	//Spiel s;
 	//s.run();
 
-=======
->>>>>>> origin/master
+	//std::vector<Einheit*> türme;
+
 	karte = new Map("map.txt");
 	
 	turm1 = new Turm();
@@ -240,22 +239,25 @@ int screen_4::Run(sf::RenderWindow &app)
 			txtTime.setString(getTimeText(seconds));
 		}
 
-		if (timePrev != milli && !died()){
-			timePrev = std::round(time.asMilliseconds());
-			
-			if (!wavesEnded){
-				progress.setSize(sf::Vector2f(progressSteps*milli, progressHeight));
-			}
+		if (!waveRunning){
+			if (timePrev != milli && !died()){
+				timePrev = std::round(time.asMilliseconds());
 
-			if (milli >= waveTimeEnd){
-				i = 0;
-				spawnWave();
-				decreaseGold(89);
+				if (!wavesEnded){
+					progress.setSize(sf::Vector2f(progressSteps*milli, progressHeight));
+				}
+
+				if (milli >= waveTimeEnd){
+					i = 0;
+					spawnWave();
+					waveRunning = true;
+					decreaseGold(89);
+				}
 			}
 		}
-
-		//app.draw(Rectangle);
 		
+		//app.draw(Rectangle);
+	
 		if (gegner.size() > 0)
 		{
 			if (karte->getPath().size() != 0)
@@ -279,6 +281,12 @@ int screen_4::Run(sf::RenderWindow &app)
 			{
 				i++;
 			}
+		}
+		else {
+			if (waveRunning){
+				waveClock.restart();
+			}
+			waveRunning = false;
 		}
 		//std::vector<Einheit*> test = gegner1.isInRange(&türme);
 
@@ -306,7 +314,6 @@ int screen_4::Run(sf::RenderWindow &app)
 						angreiffendeEinheiten[j]->angriff(gegner[k]);
 						löscheToteEinheiten();
 					}
-
 					//i = 0;
 				}
 			}
