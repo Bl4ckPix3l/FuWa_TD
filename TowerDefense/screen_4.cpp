@@ -180,7 +180,7 @@ int screen_4::Run(sf::RenderWindow &app)
 	gameOver.setColor(sf::Color::Transparent);
 	setTextCenter(gameOver, 756 / 2.f);
 	//gameOver.setPosition({ 1024.f / 2.f, 756 / 2.f });
-
+	//
 	//Spiel s;
 	//s.run();
 

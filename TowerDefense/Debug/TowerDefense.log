@@ -1,7 +1,7 @@
-﻿Der Buildvorgang wurde am 05.02.2015 21:44:32 gestartet.
+﻿Der Buildvorgang wurde am 05.02.2015 22:01:10 gestartet.
      1>Projekt "C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
      1>ClCompile:
-         E:\Programme\VC\bin\CL.exe /c /I"C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\TowerDefense\Debug" /I"C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt screen_4.cpp
+         E:\Programme\VC\bin\CL.exe /c /I"C:\Users\Torsten\Desktop\SFML-2.2\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt screen_4.cpp
          screen_4.cpp
      1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\gegner.h(8): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
      1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\turm.h(7): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
@@ -52,4 +52,4 @@
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:01.41
+Verstrichene Zeit 00:00:01.14
