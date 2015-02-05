@@ -142,9 +142,6 @@ int screen_4::Run(sf::RenderWindow &app)
 
 	sf::RectangleShape progress(sf::Vector2f(0, progressHeight));
 
-
-	//sf::vector
-
 	if (!font.loadFromFile("verdanab.ttf")){
 		std::cerr << "Error loading verdanab.ttf" << std::endl;
 	}
@@ -173,6 +170,7 @@ int screen_4::Run(sf::RenderWindow &app)
 	txtTime.setColor(getColor("default"));
 	txtTime.setPosition({ 800.f, progressHeight / 2.f });
 
+<<<<<<< HEAD
 	sf::Text gameOver;
 	gameOver.setFont(font);
 	gameOver.setCharacterSize(64);
@@ -184,10 +182,9 @@ int screen_4::Run(sf::RenderWindow &app)
 	//Spiel s;
 	//s.run();
 
+=======
+>>>>>>> origin/master
 	karte = new Map("map.txt");
-	//gegner1 = new BodenGegner();
-	//gegner.push_back(gegner1);
-	//gegner1->spawn(karte->getStartPosition());
 	
 	turm1 = new Turm();
 	turm1->setAngriff(10);
@@ -242,31 +239,20 @@ int screen_4::Run(sf::RenderWindow &app)
 		if (!died()){
 			txtTime.setString(getTimeText(seconds));
 		}
-		else {
-			gameOver.setColor(getColor("red"));
-		}
 
+		if (timePrev != milli && !died()){
+			timePrev = std::round(time.asMilliseconds());
+			
+			if (!wavesEnded){
+				progress.setSize(sf::Vector2f(progressSteps*milli, progressHeight));
+			}
 
-		if (!waveRunning){
-			if (timePrev != milli && !died()){
-				timePrev = std::round(time.asMilliseconds());
-
-				if (!wavesEnded){
-					progress.setSize(sf::Vector2f(progressSteps*milli, progressHeight));
-				}
-
-				if (milli >= waveTimeEnd){
-					i = 0;
-					spawnWave();
-					waveRunning = true;
-					//gegner1->spawn(karte->getStartPosition());
-					//i = 0;
-
-					decreaseGold(89);
-				}
+			if (milli >= waveTimeEnd){
+				i = 0;
+				spawnWave();
+				decreaseGold(89);
 			}
 		}
-		
 
 		//app.draw(Rectangle);
 		
@@ -280,7 +266,7 @@ int screen_4::Run(sf::RenderWindow &app)
 					{
 						gegner[k]->setTot(true);
 						löscheToteEinheiten();
-						decreaseLife(20);
+						decreaseLife(11);
 						movingEnemy--;
 						i--;
 					}
@@ -294,13 +280,6 @@ int screen_4::Run(sf::RenderWindow &app)
 				i++;
 			}
 		}
-		else {
-			if (waveRunning){
-				waveClock.restart();
-			}
-			waveRunning = false;
-			
-		}
 		//std::vector<Einheit*> test = gegner1.isInRange(&türme);
 
 		drawTürme(&app);
@@ -310,8 +289,6 @@ int screen_4::Run(sf::RenderWindow &app)
 		app.draw(lifeText);
 		app.draw(goldText);
 		app.draw(txtTime);
-
-		app.draw(gameOver);
 
 		if (gegner.size()>0)
 			drawGegner(&app);
@@ -333,9 +310,6 @@ int screen_4::Run(sf::RenderWindow &app)
 					//i = 0;
 				}
 			}
-
-		
-
 	}
 
 	löschePositionen();
