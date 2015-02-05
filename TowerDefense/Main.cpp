@@ -1,23 +1,40 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <iostream>
+#include "screens.hpp"
+
+
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Läuft");
-	sf::RectangleShape shape(sf::Vector2f(100.f, 100.f));
-	shape.setFillColor(sf::Color::Blue);
-	while (window.isOpen())
+	//Applications variables
+	std::vector<cScreen*> Screens;
+	int screen = 0;
+
+	//Window creation
+	sf::RenderWindow App(sf::VideoMode(1024, 768, 32), "Defense Grid");
+
+	//Mouse cursor visible
+	App.setMouseCursorVisible(true);
+
+	//Screens preparations
+	screen_0 s0;
+	screen_1 s1;
+	screen_2 s2;
+	screen_3 s3;
+	screen_4 s4;
+	Screens.push_back(&s0);
+	Screens.push_back(&s1);
+	Screens.push_back(&s2);
+	Screens.push_back(&s3);
+	Screens.push_back(&s4);
+
+	//Main loop
+	while (screen >= 0)
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-			{
-				window.close();
-			}
-		}
-		window.clear();
-		window.draw(shape);
-		window.display();
+		screen = Screens[screen]->Run(App);
 	}
-	return 0;
+
+	return EXIT_SUCCESS;
+	
 }
