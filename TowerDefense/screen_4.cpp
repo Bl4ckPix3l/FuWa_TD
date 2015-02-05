@@ -1,10 +1,9 @@
 #include <iostream>
 #include "cScreen.hpp"
 #include "screen_4.hpp"
-#include "globals.hpp"
-#include <stdio.h>
-#include <SFML/Graphics.hpp>
+#include "Spiel.h"
 
+#define POSGRÖßE 32
 
 screen_4::screen_4(void)
 {
@@ -163,6 +162,23 @@ int screen_4::Run(sf::RenderWindow &app)
 	txtTime.setColor(getColor("default"));
 	txtTime.setPosition({ 800.f, progressHeight / 2.f });
 
+	//Spiel s;
+	//s.run();
+
+	karte = new Map("map.txt");
+	//karte = *m1;
+	gegner1.spawn(karte->getStartPosition());
+	turm1.setRange(2);
+	Position *test = karte->getPositionen().at(5)[7];
+	Position *test2 = karte->getStartPosition();
+	turm1.spawn(karte->getPositionen()[5][7]);
+	turm1.berechneRangeFelder(karte->getPositionen());
+	türme.push_back(turm1);
+
+	
+
+	int i = 0;
+
 	while (Running)
 	{
 		//Verifying events
@@ -224,9 +240,83 @@ int screen_4::Run(sf::RenderWindow &app)
 		app.draw(txtTime);
 
 		//app.draw(Rectangle);
+
+		drawMap(&app);
+		if (karte->getPath().size() != 0)
+		{
+			gegner1.move(karte->getPath()[i]);
+		}
+		std::vector<Einheit*> test = gegner1.isInRange(&türme);
+
+		drawTürme(&app);
+		drawGegner(&app);
 		app.display();
+
+		if (gegner1.isInRange(&türme).size() > 0)
+		{
+			gegner1.spawn(karte->getPositionen()[0][0]);
+			i = 0;
+		}
+		if (i < karte->getPath().size() - 1)
+		{
+			i++;
+		}
 	}
+
+	löschePositionen();
+	delete karte;
+	karte = 0;
 
 	//Never reaching this point normally, but just in case, exit the application
 	return -1;
+}
+
+void screen_4::drawMap(sf::RenderWindow *app)
+{
+	for (int i = 0; i < karte->getPositionen().size(); i++)
+	{
+		for (int j = 0; j < karte->getPositionen()[i].size(); j++)
+		{
+			Position *tempPos = karte->getPositionen()[i][j];
+			feldSprite.setPosition(tempPos->getXCord() * POSGRÖßE, tempPos->getYCord() * POSGRÖßE);
+			sf::Texture tex;
+			if (tempPos->getBebaubar())
+				tex.loadFromFile("bauplatz.png");
+			else
+				tex.loadFromFile("mauer.png");
+			feldSprite.setTexture(tex);
+			app->draw(feldSprite);
+		}
+	}
+}
+
+void screen_4::drawGegner(sf::RenderWindow *app)
+{
+	gegnerSprite.setPosition(gegner1.getPosition()->getXCord() * POSGRÖßE, gegner1.getPosition()->getYCord() * POSGRÖßE);
+	sf::Texture tex;
+	tex.loadFromFile("gegner.png");
+	gegnerSprite.setTexture(tex);
+	app->draw(gegnerSprite);
+
+}
+
+void screen_4::drawTürme(sf::RenderWindow *app)
+{
+	turmSprite.setPosition(turm1.getPosition()->getXCord() * POSGRÖßE, turm1.getPosition()->getYCord() * POSGRÖßE);
+	sf::Texture tex;
+	tex.loadFromFile("turm.png");
+	turmSprite.setTexture(tex);
+	app->draw(turmSprite);
+}
+
+void screen_4::löschePositionen()
+{
+	for (int i = 0; i < karte->getPositionen().size() - 1; i++)
+	{
+		for (int j = 0; j < karte->getPositionen()[i].size(); j++)
+		{
+			delete karte->getPositionen()[i][j];
+			karte->getPositionen()[i][j] = 0;
+		}
+	}
 }
