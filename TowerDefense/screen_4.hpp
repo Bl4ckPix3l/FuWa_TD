@@ -22,7 +22,9 @@ private:
 
 	int waves = 30;
 	int waveCount = 0;
-	int waveTimeEnd = 1500;
+	int waveTimeEnd = 5000;
+
+	int enemySpawn = 5;
 
 	int life = 100;
 
@@ -47,7 +49,7 @@ private:
 	sf::Sprite turmSprite;
 	sf::RenderWindow *window;
 	std::vector<Einheit*> türme;
-	std::vector<Einheit*> gegner;
+	std::vector<BodenGegner*> gegner;
 	BodenGegner *gegner1;
 	Turm *turm1;
 	void drawMap(sf::RenderWindow *app);
@@ -67,7 +69,7 @@ public:
 	std::string getTimeText(int seconds);
 	void increaseWave();
 	bool checkWaveSpaming();
-	void spamWave();
+	void spawnWave();
 	void decreaseLife(int count);
 	bool died();
 	void increaseGold(int value);

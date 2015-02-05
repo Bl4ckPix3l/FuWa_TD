@@ -98,7 +98,6 @@
     <ClCompile Include="screen_2.cpp" />
     <ClCompile Include="screen_3.cpp" />
     <ClCompile Include="screen_4.cpp" />
-    <ClCompile Include="Spiel.cpp" />
     <ClCompile Include="Turm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -116,7 +115,6 @@
     <ClInclude Include="screen_2.hpp" />
     <ClInclude Include="screen_3.hpp" />
     <ClInclude Include="screen_4.hpp" />
-    <ClInclude Include="Spiel.h" />
     <ClInclude Include="Turm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
