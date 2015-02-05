@@ -36,6 +36,7 @@ sf::Font cScreen::getFont(){
 
 void cScreen::initColors(){
 	colors["default"] = new sf::Color(208, 181, 126);
+	colors["red"] = new sf::Color(255, 0, 0, 255);
 }
 
 sf::Color cScreen::getColor(std::string name){
