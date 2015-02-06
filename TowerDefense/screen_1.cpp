@@ -12,7 +12,7 @@ screen_1::screen_1(void)
 
 int screen_1::Run(sf::RenderWindow &App)
 {
-	sf::RectangleShape button;
+	sf::RectangleShape* button;
 	sf::Event Event;
 	sf::Text headline;
 	sf::Font font;
@@ -20,7 +20,7 @@ int screen_1::Run(sf::RenderWindow &App)
 	sf::Texture image;
 
 	std::map<std::string, std::string> menuItems;
-	std::vector<sf::RectangleShape> menuListButton;
+	std::vector<sf::RectangleShape*> menuListButton;
 	std::vector<sf::Texture*> menuListButtonTextures;
 
 	bool Running = true;
@@ -61,16 +61,16 @@ int screen_1::Run(sf::RenderWindow &App)
 		menuListButtonTextures.push_back(new sf::Texture());
 		menuListButtonTextures[count]->loadFromFile(curr->second);
 
-		button = sf::RectangleShape(sf::Vector2f(imageWidth, 280));
+		sf::RectangleShape* button = new sf::RectangleShape(sf::Vector2f(imageWidth, 280));
 		//button.setFillColor(sf::Color::Transparent);
-		button.setOutlineThickness(2);
-		button.setOutlineColor(sf::Color(1, 217, 232));
-		button.setTexture(menuListButtonTextures[count], true);
+		button->setOutlineThickness(2);
+		button->setOutlineColor(sf::Color(1, 217, 232));
+		button->setTexture(menuListButtonTextures[count], true);
 
-		sf::FloatRect textRect = button.getLocalBounds();
-		button.setOrigin(textRect.width / 2, textRect.height / 2);
+		sf::FloatRect textRect = button->getLocalBounds();
+		button->setOrigin(textRect.width / 2, textRect.height / 2);
 
-		button.setPosition(sf::Vector2f(imagePosition, (756 / 2.0f)));
+		button->setPosition(sf::Vector2f(imagePosition, (756 / 2.0f)));
 
 		menuListButton.push_back(button);
 
@@ -128,15 +128,16 @@ int screen_1::Run(sf::RenderWindow &App)
 
 
 		int menuItemCount = 0;
-		for (std::vector<sf::RectangleShape>::iterator i = menuListButton.begin(); i != menuListButton.end(); ++i) {
+		for (int i = 0; i < menuListButton.size(); i++){
+		//for (std::vector<sf::RectangleShape>::iterator i = menuListButton.begin(); i != menuListButton.end(); ++i) {
 			if (menuItemCount == item){
-				i->setOutlineColor(sf::Color(255, 0, 0, 255));
+				menuListButton[menuItemCount]->setOutlineColor(sf::Color(255, 0, 0, 255));
 			}
 			else {
-				i->setOutlineColor(sf::Color(255, 255, 255, 255));
+				menuListButton[menuItemCount]->setOutlineColor(sf::Color(255, 255, 255, 255));
 			}
 
-			App.draw(menuListButton[menuItemCount]);
+			App.draw(*menuListButton[menuItemCount]);
 
 			menuItemCount++;
 		}

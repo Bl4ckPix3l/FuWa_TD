@@ -33,7 +33,7 @@ int screen_0::Run(sf::RenderWindow &App)
 	int alpha = 0;
 	int menu = 0;
 
-	sf::Event Event;
+	
 	sf::Texture Texture;
 	sf::Texture logo;
 	sf::Sprite spriteLogo;
@@ -41,11 +41,11 @@ int screen_0::Run(sf::RenderWindow &App)
 	sf::Font Font;
 	sf::Text menuItemPlay;
 	sf::Text menuItemSettings;
-	sf::RectangleShape button;
+	sf::RectangleShape* button;
 
 	std::vector<std::string> menuItems;
 	std::vector<sf::Text*> menuListText;
-	std::vector<sf::RectangleShape> menuListButton;
+	std::vector<sf::RectangleShape*> menuListButton;
 
 	if (!Font.loadFromFile("verdanab.ttf")){
 		std::cerr << "Error loading verdanab.ttf" << std::endl;
@@ -72,11 +72,11 @@ int screen_0::Run(sf::RenderWindow &App)
 		//setTextCenter(MenuTest, menuMarginTop);
 		menuListText.push_back(MenuTest);
 
-		button = sf::RectangleShape(sf::Vector2f(250, 40));
-		button.setFillColor(sf::Color::Transparent);
-		button.setOutlineThickness(3);
-		button.setOutlineColor(sf::Color(1, 217, 232));
-		setButtonCenter(button, menuMarginTop + 8);
+		sf::RectangleShape * button = new sf::RectangleShape(sf::Vector2f(250, 40));
+		button->setFillColor(sf::Color::Transparent);
+		button->setOutlineThickness(3);
+		button->setOutlineColor(sf::Color(1, 217, 232));
+		setButtonCenter(*button, menuMarginTop + 8);
 		menuListButton.push_back(button);
 
 		menuMarginTop = menuMarginTop + menuSpace;
@@ -105,6 +105,8 @@ int screen_0::Run(sf::RenderWindow &App)
 	}
 
 	int menuPrev;
+
+	sf::Event Event;
 
 	while (Running)
 	{
@@ -158,8 +160,9 @@ int screen_0::Run(sf::RenderWindow &App)
 				if (Event.mouseButton.button == sf::Mouse::Left)
 				{
 					menu = onButtonHover(Event, menuListButton, "press");
-
-					return getMenuRouting(menu);
+					if (menu >= 0){
+						return getMenuRouting(menu);
+					}
 				}
 			}
 		}
@@ -195,7 +198,7 @@ int screen_0::Run(sf::RenderWindow &App)
 			}
 
 			App.draw(*menuListText[i]);
-			App.draw(menuListButton[i]);
+			App.draw(*menuListButton[i]);
 
 			menuMarginTop = menuMarginTop + menuSpace;
 		}

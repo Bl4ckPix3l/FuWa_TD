@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2014 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -22,16 +22,13 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef SFML_JOYSTICKIMPL_HPP
-#define SFML_JOYSTICKIMPL_HPP
+#ifndef SFML_JOYSTICKIMPLIOS_HPP
+#define SFML_JOYSTICKIMPLIOS_HPP
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Config.hpp>
-#include <SFML/Window/Joystick.hpp>
-#include <SFML/System/String.hpp>
-#include <algorithm>
+#include <SFML/Window/JoystickImpl.hpp>
 
 
 namespace sf
@@ -39,38 +36,74 @@ namespace sf
 namespace priv
 {
 ////////////////////////////////////////////////////////////
-/// \brief Structure holding a joystick's information
+/// \brief iOS implementation of joysticks
 ///
 ////////////////////////////////////////////////////////////
-struct JoystickCaps
+class JoystickImpl
 {
-    JoystickCaps()
-    {
-        buttonCount = 0;
-        std::fill(axes, axes + Joystick::AxisCount, false);
-    }
+public:
 
-    unsigned int buttonCount;               ///< Number of buttons supported by the joystick
-    bool         axes[Joystick::AxisCount]; ///< Support for each axis
-};
+    ////////////////////////////////////////////////////////////
+    /// \brief Perform the global initialization of the joystick module
+    ///
+    ////////////////////////////////////////////////////////////
+    static void initialize();
 
+    ////////////////////////////////////////////////////////////
+    /// \brief Perform the global cleanup of the joystick module
+    ///
+    ////////////////////////////////////////////////////////////
+    static void cleanup();
 
-////////////////////////////////////////////////////////////
-/// \brief Structure holding a joystick's state
-///
-////////////////////////////////////////////////////////////
-struct JoystickState
-{
-    JoystickState()
-    {
-        connected = false;
-        std::fill(axes, axes + Joystick::AxisCount, 0.f);
-        std::fill(buttons, buttons + Joystick::ButtonCount, false);
-    }
+    ////////////////////////////////////////////////////////////
+    /// \brief Check if a joystick is currently connected
+    ///
+    /// \param index Index of the joystick to check
+    ///
+    /// \return True if the joystick is connected, false otherwise
+    ///
+    ////////////////////////////////////////////////////////////
+    static bool isConnected(unsigned int index);
 
-    bool  connected;                      ///< Is the joystick currently connected?
-    float axes[Joystick::AxisCount];      ///< Position of each axis, in range [-100, 100]
-    bool  buttons[Joystick::ButtonCount]; ///< Status of each button (true = pressed)
+    ////////////////////////////////////////////////////////////
+    /// \brief Open the joystick
+    ///
+    /// \param index Index assigned to the joystick
+    ///
+    /// \return True on success, false on failure
+    ///
+    ////////////////////////////////////////////////////////////
+    bool open(unsigned int index);
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Close the joystick
+    ///
+    ////////////////////////////////////////////////////////////
+    void close();
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the joystick capabilities
+    ///
+    /// \return Joystick capabilities
+    ///
+    ////////////////////////////////////////////////////////////
+    JoystickCaps getCapabilities() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Get the joystick identification
+    ///
+    /// \return Joystick identification
+    ///
+    ////////////////////////////////////////////////////////////
+    Joystick::Identification getIdentification() const;
+
+    ////////////////////////////////////////////////////////////
+    /// \brief Update the joystick and get its new state
+    ///
+    /// \return Joystick state
+    ///
+    ////////////////////////////////////////////////////////////
+    JoystickState update();
 };
 
 } // namespace priv
@@ -78,31 +111,4 @@ struct JoystickState
 } // namespace sf
 
 
-#if defined(SFML_SYSTEM_WINDOWS)
-
-    #include <SFML/Window/Win32/JoystickImpl.hpp>
-
-#elif defined(SFML_SYSTEM_LINUX)
-
-    #include <SFML/Window/Unix/JoystickImpl.hpp>
-
-#elif defined(SFML_SYSTEM_FREEBSD)
-
-    #include <SFML/Window/FreeBSD/JoystickImpl.hpp>
-
-#elif defined(SFML_SYSTEM_MACOS)
-
-    #include <SFML/Window/OSX/JoystickImpl.hpp>
-
-#elif defined(SFML_SYSTEM_IOS)
-
-    #include <SFML/Window/iOS/JoystickImpl.hpp>
-
-#elif defined(SFML_SYSTEM_ANDROID)
-
-    #include <SFML/Window/Android/JoystickImpl.hpp>
-
-#endif
-
-
-#endif // SFML_JOYSTICKIMPL_HPP
+#endif // SFML_JOYSTICKIMPLIOS_HPP

@@ -8,6 +8,7 @@
 #include <map>
 
 
+
 sf::Music cScreen::music;
 sf::Sprite cScreen::mainBg;
 sf::Font cScreen::mainFont;
@@ -37,6 +38,10 @@ sf::Font cScreen::getFont(){
 void cScreen::initColors(){
 	colors["default"] = new sf::Color(208, 181, 126);
 	colors["red"] = new sf::Color(255, 0, 0, 255);
+	colors["mask"] = new sf::Color(0, 0, 0, 100);
+	colors["hover"] = new sf::Color(89, 230, 45);
+	colors["start"] = new sf::Color(66, 234, 15, 100);
+	colors["goal"] = new sf::Color(234, 230, 45);
 }
 
 sf::Color cScreen::getColor(std::string name){
@@ -116,7 +121,7 @@ void cScreen::setButtonCenter(sf::RectangleShape &rec, float yPosition){
 }
 
 
-int cScreen::onButtonHover(sf::Event Event, std::vector<sf::RectangleShape>  menuListButton, std::string type){
+int cScreen::onButtonHover(sf::Event Event, std::vector<sf::RectangleShape*>  menuListButton, std::string type){
 	float posX, posY, btnWidth, btnHeight;
 	float leftEdge, rightEdge, topEdge, bottomEdge;
 
@@ -136,29 +141,28 @@ int cScreen::onButtonHover(sf::Event Event, std::vector<sf::RectangleShape>  men
 		return -1;
 	}
 
-	int count = 0;
-	for (std::vector<sf::RectangleShape>::iterator i = menuListButton.begin(); i != menuListButton.end(); ++i) {
-		posX = i->getPosition().x;
-		posY = i->getPosition().y;
+	for (int i = 0; i < menuListButton.size(); i++){
+	//for (std::vector<sf::RectangleShape>::iterator i = menuListButton.begin(); i != menuListButton.end(); ++i) {
+		posX = menuListButton[i]->getPosition().x;
+		posY = menuListButton[i]->getPosition().y;
 
-		btnWidth = i->getLocalBounds().width;
-		btnHeight = i->getLocalBounds().height;
+		btnWidth = menuListButton[i]->getLocalBounds().width;
+		btnHeight = menuListButton[i]->getLocalBounds().height;
 
 		leftEdge = posX - btnWidth / 2;
 		rightEdge = posX + btnWidth / 2;
 		topEdge = posY - btnHeight / 2;
 		bottomEdge = posY + btnHeight / 2;
 
-		std::cout << "x:" << leftEdge << " y:" << topEdge << "\n";
+		std::cout << "x:" << moveX << " y:" << moveY << "\n";
 
 		if (moveX > leftEdge && moveX < rightEdge && moveY > topEdge && moveY < bottomEdge){
-			std::cout << "button entered" << count << " \n";
+			std::cout << "button entered" << i << " \n";
 			btnEnterd = true;
 
-			return count;
+			return i;
 		}
 
-		count++;
 	}
 	return -1;
 }

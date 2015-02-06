@@ -22,36 +22,93 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef SFML_SENSORIMPL_HPP
-#define SFML_SENSORIMPL_HPP
+#ifndef SFML_SENSORIMPLIOS_HPP
+#define SFML_SENSORIMPLIOS_HPP
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Config.hpp>
 #include <SFML/Window/Sensor.hpp>
 
-#if defined(SFML_SYSTEM_WINDOWS)
 
-    #include <SFML/Window/Win32/SensorImpl.hpp>
+namespace sf
+{
+namespace priv
+{
+////////////////////////////////////////////////////////////
+/// \brief iOS implementation of sensors
+///
+////////////////////////////////////////////////////////////
+class SensorImpl
+{
+public:
 
-#elif defined(SFML_SYSTEM_LINUX) || defined(SFML_SYSTEM_FREEBSD)
+    ////////////////////////////////////////////////////////////
+    /// \brief Perform the global initialization of the sensor module
+    ///
+    ////////////////////////////////////////////////////////////
+    static void initialize();
 
-    #include <SFML/Window/Unix/SensorImpl.hpp>
+    ////////////////////////////////////////////////////////////
+    /// \brief Perform the global cleanup of the sensor module
+    ///
+    ////////////////////////////////////////////////////////////
+    static void cleanup();
 
-#elif defined(SFML_SYSTEM_MACOS)
+    ////////////////////////////////////////////////////////////
+    /// \brief Check if a sensor is available
+    ///
+    /// \param sensor Sensor to check
+    ///
+    /// \return True if the sensor is available, false otherwise
+    ///
+    ////////////////////////////////////////////////////////////
+    static bool isAvailable(Sensor::Type sensor);
 
-    #include <SFML/Window/OSX/SensorImpl.hpp>
+    ////////////////////////////////////////////////////////////
+    /// \brief Open the sensor
+    ///
+    /// \param sensor Type of the sensor
+    ///
+    /// \return True on success, false on failure
+    ///
+    ////////////////////////////////////////////////////////////
+    bool open(Sensor::Type sensor);
 
-#elif defined(SFML_SYSTEM_IOS)
+    ////////////////////////////////////////////////////////////
+    /// \brief Close the sensor
+    ///
+    ////////////////////////////////////////////////////////////
+    void close();
 
-    #include <SFML/Window/iOS/SensorImpl.hpp>
+    ////////////////////////////////////////////////////////////
+    /// \brief Update the sensor and get its new value
+    ///
+    /// \return Sensor value
+    ///
+    ////////////////////////////////////////////////////////////
+    Vector3f update();
 
-#elif defined(SFML_SYSTEM_ANDROID)
+    ////////////////////////////////////////////////////////////
+    /// \brief Enable or disable the sensor
+    ///
+    /// \param enabled True to enable, false to disable
+    ///
+    ////////////////////////////////////////////////////////////
+    void setEnabled(bool enabled);
 
-    #include <SFML/Window/Android/SensorImpl.hpp>
+private:
 
-#endif
+    ////////////////////////////////////////////////////////////
+    // Member data
+    ////////////////////////////////////////////////////////////
+    Sensor::Type m_sensor; ///< Type of the sensor
+    bool m_enabled;        ///< Enable state of the sensor
+};
+
+} // namespace priv
+
+} // namespace sf
 
 
-#endif // SFML_SENSORIMPL_HPP
+#endif // SFML_SENSORIMPLIOS_HPP

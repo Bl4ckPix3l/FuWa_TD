@@ -38,7 +38,7 @@ public:
 	void setTextCenter(sf::Text &text, float yPosition);
 	void setSpriteCenter(sf::Sprite &sprite, float yPosition);
 	void setButtonCenter(sf::RectangleShape &rec, float yPosition);
-	int onButtonHover(sf::Event Event, std::vector<sf::RectangleShape>  menuListButton, std::string type);
+	int onButtonHover(sf::Event Event, std::vector<sf::RectangleShape*>  menuListButton, std::string type);
 	void playButtonSound();
 	void playSound(std::string type);
 	void initSounds();

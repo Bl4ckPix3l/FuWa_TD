@@ -10,12 +10,9 @@
 class Gegner:public Einheit
 {private:
 	int beute;
-	int speed;
 
 public:
 	Gegner();
 	~Gegner();
-	int getSpeed();
-	void setSpeed(int pSpeed);
 };
 
