@@ -66,6 +66,7 @@ void screen_4::spawnWave(){
 	for (int i = 0; i < enemySpawn; i++){
 		BodenGegner *enemy = new BodenGegner();
 		enemy->setLeben(40);
+		enemy->setSpeed(5);
 		enemy->spawn(karte->getStartPosition());
 		gegner.push_back(enemy);
 	}
@@ -73,6 +74,7 @@ void screen_4::spawnWave(){
 	increaseWave();
 	playSound("spawn1");
 	waveClock.restart();
+	moveClock.restart();
 	timePrev = -1;
 	milli = 0;
 }
@@ -133,6 +135,8 @@ int screen_4::Run(sf::RenderWindow &app)
 	sf::Font font;
 	sf::Text txtTime;
 	sf::Clock clock;
+	sf::Clock fpsClock;
+	float lastTime = 0;
 
 	bool Running = true;
 	
@@ -192,13 +196,31 @@ int screen_4::Run(sf::RenderWindow &app)
 
 	turm1->spawn(karte->getPositionen()[5][7]);
 	turm1->berechneRangeFelder(karte->getPositionen());
+	
+	turm2 = new Turm();
+	turm2->setAngriff(10);
+	türme.push_back(turm2);
+	turm2->setRange(2);
+	turm2->spawn(karte->getPositionen()[5][6]);
+	turm2->berechneRangeFelder(karte->getPositionen());
 
-	int i = 0;
-	int movingEnemy = 0;
+	turm3 = new Turm();
+	turm3->setAngriff(10);
+	türme.push_back(turm3);
+	turm3->setRange(2);
+	turm3->spawn(karte->getPositionen()[5][8]);
+	turm3->berechneRangeFelder(karte->getPositionen());
+
+	pathCounter = 1;
+	movingEnemy = 1;
 	bool waveRunning = false;
 
 	while (Running)
 	{
+		float fps = 1.f / fpsClock.getElapsedTime().asSeconds();
+		fpsClock.restart();
+		
+		std::cout << "FPS:" << fps << "\n";
 		//Verifying events
 		while (app.pollEvent(Event))
 		{
@@ -248,7 +270,7 @@ int screen_4::Run(sf::RenderWindow &app)
 				}
 
 				if (milli >= waveTimeEnd){
-					i = 0;
+					pathCounter = 1;
 					spawnWave();
 					waveRunning = true;
 					decreaseGold(89);
@@ -262,24 +284,27 @@ int screen_4::Run(sf::RenderWindow &app)
 		{
 			if (karte->getPath().size() != 0)
 			{
-				for (int k = 0; k <= movingEnemy-1; k++){
-					gegner[k]->move(karte->getPath()[i-k]);
-					if (gegner[k]->getPosition() == karte->getZielPosition())
+				double test = moveClock.getElapsedTime().asSeconds();
+				int moveTime = moveClock.getElapsedTime().asSeconds();
+				
+				if (moveTime%gegner[0]->getSpeed() == 0 && moveTime >0)
+				{
+					for (int k = 0; k <= movingEnemy-1; k++){
+						gegner[k]->move(karte->getPath()[pathCounter - k]);
+						if (gegner[k]->getPosition() == karte->getZielPosition())
+						{
+							gegner[k]->setTot(true);
+							löscheToteEinheiten();
+							decreaseLife(11);
+						}
+					}
+					if (movingEnemy < gegner.size())
+						movingEnemy++;
+					if (pathCounter < karte->getPath().size() + gegner.size() - 1)
 					{
-						gegner[k]->setTot(true);
-						löscheToteEinheiten();
-						decreaseLife(11);
-						movingEnemy--;
-						i--;
+						pathCounter++;
 					}
 				}
-				if (movingEnemy < gegner.size())
-					movingEnemy ++;
-				
-			}
-			if (i < karte->getPath().size() - 1 + gegner.size())
-			{
-				i++;
 			}
 		}
 		else {
@@ -288,8 +313,6 @@ int screen_4::Run(sf::RenderWindow &app)
 			}
 			waveRunning = false;
 		}
-		//std::vector<Einheit*> test = gegner1.isInRange(&türme);
-
 		drawTürme(&app);
 
 		app.draw(progress);
@@ -314,7 +337,6 @@ int screen_4::Run(sf::RenderWindow &app)
 						angreiffendeEinheiten[j]->angriff(gegner[k]);
 						löscheToteEinheiten();
 					}
-					//i = 0;
 				}
 			}
 	}
@@ -336,11 +358,11 @@ void screen_4::drawMap(sf::RenderWindow *app)
 			Position *tempPos = karte->getPositionen()[i][j];
 			feldSprite.setPosition(tempPos->getXCord() * POSGRÖßE, tempPos->getYCord() * POSGRÖßE + headerHeight);
 			sf::Texture tex;
-			if (tempPos->getBebaubar())
-				tex.loadFromFile("bauplatz.png");
-			else
-				tex.loadFromFile("mauer.png");
-			feldSprite.setTexture(tex);
+		//	if (tempPos->getBebaubar())
+			//	tex.loadFromFile("bauplatz.png");
+		//	else
+			//	tex.loadFromFile("mauer.png");
+		//	feldSprite.setTexture(tex);
 			app->draw(feldSprite);
 		}
 	}
@@ -349,21 +371,24 @@ void screen_4::drawMap(sf::RenderWindow *app)
 void screen_4::drawGegner(sf::RenderWindow *app)
 {
 	for (int j = 0; j < gegner.size(); j++){
+		
 		gegnerSprite.setPosition(gegner[j]->getPosition()->getXCord() * POSGRÖßE, gegner[j]->getPosition()->getYCord() * POSGRÖßE + headerHeight);
 		sf::Texture tex;
-		tex.loadFromFile("gegner.png");
-		gegnerSprite.setTexture(tex);
+		//tex.loadFromFile("gegner.png");
+		//gegnerSprite.setTexture(tex);
 		app->draw(gegnerSprite);
 	}
 }
 
 void screen_4::drawTürme(sf::RenderWindow *app)
 {
-	turmSprite.setPosition(turm1->getPosition()->getXCord() * POSGRÖßE, turm1->getPosition()->getYCord() * POSGRÖßE + headerHeight);
-	sf::Texture tex;
-	tex.loadFromFile("turm.png");
-	turmSprite.setTexture(tex);
-	app->draw(turmSprite);
+	for (int j = 0; j < türme.size(); j++){
+		turmSprite.setPosition(türme[j]->getPosition()->getXCord() * POSGRÖßE, türme[j]->getPosition()->getYCord() * POSGRÖßE + headerHeight);
+		sf::Texture tex;
+		//tex.loadFromFile("turm.png");
+		//turmSprite.setTexture(tex);
+		app->draw(turmSprite);
+	}
 }
 
 void screen_4::löschePositionen()
@@ -397,6 +422,8 @@ void screen_4::löscheToteEinheiten(){
 			delete gegner[i];
 			gegner[i] = 0;
 			gegner.erase(gegner.begin()+i);
+			movingEnemy--;
+			pathCounter--;
 		}
 	}
 }
