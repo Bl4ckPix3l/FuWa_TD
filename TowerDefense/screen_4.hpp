@@ -33,6 +33,8 @@ private:
 	int timePrev = -1;
 	int milli = 0;
 
+	int towers = 3;
+
 	int seconds = 0;
 
 	bool wavesEnded = false;
@@ -42,6 +44,12 @@ private:
 	sf::Text goldText;
 	sf::Clock waveClock;
 
+	std::vector<sf::RectangleShape *> towerIcons;
+	std::vector<sf::RectangleShape *> enemyMapIcon;
+	std::vector<sf::RectangleShape *> towerMapIcon;
+	std::vector<sf::RectangleShape *> mapFields;
+	
+	
 
 	Map *karte;
 	sf::Sprite feldSprite;
@@ -55,6 +63,7 @@ private:
 	void drawMap(sf::RenderWindow *app);
 	void drawGegner(sf::RenderWindow *app);
 	void drawTürme(sf::RenderWindow *app);
+	void drawTowerIcons(sf::RenderWindow *app);
 	void löschePositionen();
 	void löscheToteEinheiten();
 	void löscheAlleEinheiten();
