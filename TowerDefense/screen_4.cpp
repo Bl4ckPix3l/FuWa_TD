@@ -138,6 +138,9 @@ int screen_4::Run(sf::RenderWindow &app)
 	sf::Text txtTime;
 	sf::Clock clock;
 
+	sf::Time time;
+	sf::Time clockTime;
+
 	bool Running = true;
 	
 	float progressWidth = 120;
@@ -149,6 +152,13 @@ int screen_4::Run(sf::RenderWindow &app)
 	if (!font.loadFromFile("verdanab.ttf")){
 		std::cerr << "Error loading verdanab.ttf" << std::endl;
 	}
+
+	changeMainMusic("game.ogg");
+
+	//setBgTexture("bgMoon.jpg");
+	sf::Texture bgTexture;
+	bgTexture.loadFromFile("bgMoon.jpg");
+	mainBg.setTexture(bgTexture);
 	
 	waveText.setFont(font);
 	waveText.setCharacterSize(20);
@@ -201,31 +211,42 @@ int screen_4::Run(sf::RenderWindow &app)
 
 	karte = new Map("map.txt");
 	
-	turm1 = new Turm();
-	turm1->setAngriff(10);
-	turm1->setSpeed(1);
-	türme.push_back(turm1);
-	turm1->setRange(2);
-
-	turm1->spawn(karte->getPositionen()[5][7]);
-	turm1->berechneRangeFelder(karte->getPositionen());
-
 	pathCounter = 0;
 	movingEnemy = 1;
+
 	bool waveRunning = false;
 
 	int selecteTower = -1;
 	bool towerSelected = false;
 
+	Position* fieldPos = 0;
+
+	int clockHoverMilli;
+
+	sf::Clock clockHover;
+	sf::Time timeHover;
+
 	sf::Clock fpsClock;
 	initShapes();
+
 	kills = 0;
+
+	int fieldHoverd = false;
+	bool isTowerSelected = false;
+
 	while (Running)
 	{
+		clockTime = clock.getElapsedTime();
+		
+		seconds = std::round(clockTime.asSeconds());
+
+		timeHover = clockHover.getElapsedTime();
+		clockHoverMilli = timeHover.asMilliseconds();
+
 		float fps = 1.f / fpsClock.getElapsedTime().asSeconds();
 		std::cout << fps << "\n";
 		fpsClock.restart();
-		//Verifying events
+		//std::cout << clockMilli % 100 << " | " << clockMilli << "\n";
 		while (app.pollEvent(Event))
 		{
 			// Window closed
@@ -242,21 +263,62 @@ int screen_4::Run(sf::RenderWindow &app)
 			}
 
 			if (Event.type == sf::Event::MouseMoved){
-								
+				//std::cout << clockMilli % 100 << " | " << clockMilli;
+				if (!waveRunning){
+					if (clockHoverMilli >= 100 && isTowerSelected){
+						if (!fieldHoverd){
+							fieldPos = onFieldHover(Event, karte, "move");
+						}
+						fieldHoverd = true;
+						std::cout << "hover Field \n";
+						clockHover.restart();
+					}
+					else {
+						fieldHoverd = false;
+					}
+				}
 			}
 
 			if (Event.type == sf::Event::MouseButtonPressed)
 			{
-				int selecteTowerPrev = selecteTower;
-				if (selecteTower >= 0){
-					towerIcons[selecteTower]->setOutlineColor(sf::Color::Transparent);
+				
+				if (!waveRunning){
+					if (isTowerSelected && fieldPos != 0){
+						Turm* newTower = new Turm();
+						
+						if (isGoldAvailable(0)){
+							türme.push_back(newTower);
+							newTower->setAngriff(10);
+							newTower->setRange(2);
+
+							decreaseGold(0);
+							fieldPos->setBebaubar(false);
+							newTower->spawn(fieldPos);
+							newTower->berechneRangeFelder(karte->getPositionen());
+							playSound("addTower");
+						}
+						else {
+							playSound("money");
+						}
+					}
 				}
+
+				int selecteTowerPrev = selecteTower;
+				//selecteTower = onButtonHover(Event, towerIcons, "press");
+
 				selecteTower = onButtonHover(Event, towerIcons, "press");
-				if (selecteTower == selecteTowerPrev && selecteTower>=0){
+
+				if (selecteTowerPrev != selecteTower && selecteTowerPrev > 0 && selecteTower > 0){
+					towerIcons[selecteTowerPrev]->setOutlineColor(sf::Color::Transparent);
+				}
+				if (selecteTower == selecteTowerPrev && selecteTower >= 0){
 					towerIcons[selecteTower]->setOutlineColor(sf::Color::Transparent);
 					selecteTower = -1;
-				} else if (selecteTower>=0){
+					isTowerSelected = false;
+				}
+				else if (selecteTower >= 0){
 					towerIcons[selecteTower]->setOutlineColor(getColor("hover"));
+					isTowerSelected = true;
 				}
 			}
 		}
@@ -264,19 +326,17 @@ int screen_4::Run(sf::RenderWindow &app)
 		//Clearing screen
 		app.clear(sf::Color(0, 0, 0, 0));
 
+		app.draw(mainBg);
 		drawMap(&app);
 
-		sf::Time time = waveClock.getElapsedTime();
-		sf::Time clockTime = clock.getElapsedTime();
+		time = waveClock.getElapsedTime();
 		milli = std::round(time.asMilliseconds());
+
+		clockTime = clock.getElapsedTime();
 		seconds = std::round(clockTime.asSeconds());
 		
 		if (!died()){
 			txtTime.setString(getTimeText(seconds));
-		}
-		else {
-			gameOver.setColor(getColor("red"));
-			gameOverMask.setFillColor(getColor("mask"));
 		}
 
 		if (!waveRunning){
@@ -290,7 +350,10 @@ int screen_4::Run(sf::RenderWindow &app)
 				if (milli >= waveTimeEnd){
 					karte->initWegfindung();
 					spawnWave();
+					karte->initWegfindung();
 					waveRunning = true;
+					fieldPos = 0;
+					//decreaseGold(89);
 				}
 			}
 		}
@@ -347,8 +410,30 @@ int screen_4::Run(sf::RenderWindow &app)
 		app.draw(gameOverMask);
 		app.draw(gameOver);
 
+		if (died()){
+			gameOver.setColor(getColor("red"));
+			gameOverMask.setFillColor(getColor("mask"));
+			app.draw(gameOverMask);
+			app.draw(gameOver);
+		}
+
 		if (gegner.size()>0)
 			drawGegner(&app);
+
+		if (fieldPos != 0 && !waveRunning){
+			field->setPosition(fieldPos->getXCordReal(), fieldPos->getYCordReal() + headerHeight);
+			
+			if (fieldPos->getBebaubar()){
+				field->setFillColor(getColor("placeable"));
+			}
+			else {
+				field->setFillColor(getColor("notplaceable"));
+			}
+
+			app.draw(*field);
+		}
+
+
 		app.display();
 
 		angreiffendeEinheiten;
@@ -370,6 +455,7 @@ int screen_4::Run(sf::RenderWindow &app)
 							}
 							angreiffendeEinheiten.erase(angreiffendeEinheiten.begin() + j);
 						}
+
 					}
 				}
 			}
@@ -402,7 +488,7 @@ void screen_4::drawMap(sf::RenderWindow *app)
 		for (int j = 0; j < karte->getPositionen()[i].size(); j++)
 		{
 			tempPos = karte->getPositionen()[i][j];
-			field->setPosition(tempPos->getXCord() * POSGRÖßE, tempPos->getYCord() * POSGRÖßE + headerHeight);
+			field->setPosition(tempPos->getXCordReal(), tempPos->getYCordReal() + headerHeight);
 
 			if (karte->getStartPosition() == karte->getPositionen()[i][j]){
 				field->setFillColor(getColor("start"));
@@ -422,7 +508,7 @@ void screen_4::drawGegner(sf::RenderWindow *app)
 	for (int j = 0; j < gegner.size(); j++){
 		if (!gegner[j]->getTot())
 		{
-			enemy->setPosition(gegner[j]->getPosition()->getXCord() * POSGRÖßE, gegner[j]->getPosition()->getYCord() * POSGRÖßE + headerHeight);
+			enemy->setPosition(gegner[j]->getPosition()-getXCordReal(), gegner[j]->getPosition()->getYCordReal() + headerHeight);
 			enemy->setFillColor(sf::Color::Red);
 			app->draw(*enemy);
 		}
@@ -434,9 +520,8 @@ void screen_4::drawTürme(sf::RenderWindow *app)
 	for (int j = 0; j < türme.size(); j++){
 		if (!türme[j]->getTot())
 		{
-			tower->setPosition(turm1->getPosition()->getXCord() * POSGRÖßE, turm1->getPosition()->getYCord() * POSGRÖßE + headerHeight);
-			tower->setFillColor(sf::Color::Magenta);
-		
+			tower->setPosition(türme[j]->getPosition()->getXCordReal(), türme[j]->getPosition()->getYCordReal() + headerHeight);
+			tower->setFillColor(sf::Color::Magenta);		
 			app->draw(*tower);
 		}
 	}
@@ -463,6 +548,7 @@ void screen_4::löscheToteEinheiten(){
 		türme[0] = 0;
 		türme.erase(türme.begin());
 	}
+	
 	//lösche gegner	
 	size = gegner.size();
 	for (int i = 0; i < size; i++)
@@ -496,6 +582,8 @@ void screen_4::initShapes()
 	field = new sf::RectangleShape(sf::Vector2f(POSGRÖßE, POSGRÖßE));
 	field->setFillColor(sf::Color::Transparent);
 	field->setOutlineThickness(1);
+	//sf::FloatRect rec = field->getLocalBounds();
+	//field->setOrigin(rec.width / 2, rec.height / 2);
 	field->setOutlineColor(getColor("default"));
 
 	tower = new sf::RectangleShape(sf::Vector2f(POSGRÖßE, POSGRÖßE));

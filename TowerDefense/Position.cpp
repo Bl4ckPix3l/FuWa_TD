@@ -1,5 +1,7 @@
 #include "Position.h"
+#include "globals.hpp"
 
+int Position::posSize = 64;
 
 Position::Position()
 {
@@ -33,6 +35,13 @@ int Position::getXCord()
 int Position::getYCord()
 {
 	return yCord;
+}
+int Position::getXCordReal(){
+	return xCord * posSize;
+}
+
+int Position::getYCordReal(){
+	return yCord * posSize;
 }
 int Position::getSize()
 {
