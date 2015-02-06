@@ -67,8 +67,12 @@ void screen_4::spawnWave(){
 	for (int i = 0; i < enemySpawn; i++){
 		BodenGegner *enemy = new BodenGegner();
 		enemy->setLeben(40);
+		enemy->setSpeed(1);
 		enemy->spawn(karte->getStartPosition());
 		gegner.push_back(enemy);
+		movingEnemy = 1;
+		pathCounter = 0;
+		kills = 0;
 	}
 
 	increaseWave();
@@ -199,14 +203,15 @@ int screen_4::Run(sf::RenderWindow &app)
 	
 	turm1 = new Turm();
 	turm1->setAngriff(10);
+	turm1->setSpeed(1);
 	türme.push_back(turm1);
 	turm1->setRange(2);
 
 	turm1->spawn(karte->getPositionen()[5][7]);
 	turm1->berechneRangeFelder(karte->getPositionen());
 
-	int i = 0;
-	int movingEnemy = 0;
+	pathCounter = 0;
+	movingEnemy = 1;
 	bool waveRunning = false;
 
 	int selecteTower = -1;
@@ -214,7 +219,7 @@ int screen_4::Run(sf::RenderWindow &app)
 
 	sf::Clock fpsClock;
 	initShapes();
-
+	kills = 0;
 	while (Running)
 	{
 		float fps = 1.f / fpsClock.getElapsedTime().asSeconds();
@@ -247,13 +252,12 @@ int screen_4::Run(sf::RenderWindow &app)
 					towerIcons[selecteTower]->setOutlineColor(sf::Color::Transparent);
 				}
 				selecteTower = onButtonHover(Event, towerIcons, "press");
-				if (selecteTower == selecteTowerPrev){
+				if (selecteTower == selecteTowerPrev && selecteTower>=0){
 					towerIcons[selecteTower]->setOutlineColor(sf::Color::Transparent);
 					selecteTower = -1;
 				} else if (selecteTower>=0){
 					towerIcons[selecteTower]->setOutlineColor(getColor("hover"));
 				}
-				
 			}
 		}
 
@@ -267,7 +271,6 @@ int screen_4::Run(sf::RenderWindow &app)
 		milli = std::round(time.asMilliseconds());
 		seconds = std::round(clockTime.asSeconds());
 		
-
 		if (!died()){
 			txtTime.setString(getTimeText(seconds));
 		}
@@ -285,10 +288,9 @@ int screen_4::Run(sf::RenderWindow &app)
 				}
 
 				if (milli >= waveTimeEnd){
-					i = 0;
+					karte->initWegfindung();
 					spawnWave();
 					waveRunning = true;
-					//decreaseGold(89);
 				}
 			}
 		}
@@ -297,24 +299,32 @@ int screen_4::Run(sf::RenderWindow &app)
 		{
 			if (karte->getPath().size() != 0)
 			{
-				for (int k = 0; k <= movingEnemy-1; k++){
-					gegner[k]->move(karte->getPath()[i-k]);
-					if (gegner[k]->getPosition() == karte->getZielPosition())
-					{
-						gegner[k]->setTot(true);
-						löscheToteEinheiten();
-						decreaseLife(1);
-						movingEnemy--;
-						i--;
+				int moveTime = moveClock.getElapsedTime().asSeconds();
+				if (moveTime>=gegner[0]->getSpeed())
+				{
+					for (int k = 0; k <= movingEnemy-1; k++){
+						if (gegner[k]->getPosition() != karte->getZielPosition())
+						{
+							gegner[k]->move(karte->getPath()[pathCounter - (k * 2)+kills]);
+						}
+						if (gegner[k]->getPosition() == karte->getZielPosition()&&
+							!gegner[k]->getTot())
+						{
+							gegner[k]->setTot(true);
+							kills++;
+							decreaseLife(1);
+						}
 					}
+					if (movingEnemy < gegner.size() && pathCounter%2 ==0 && pathCounter!=0)
+						movingEnemy++;
+
+					if (pathCounter < karte->getPath().size() - 1 + gegner.size())
+					{
+						pathCounter++;
+					}
+					moveClock.restart();
 				}
-				if (movingEnemy < gegner.size())
-					movingEnemy ++;
 				
-			}
-			if (i < karte->getPath().size() - 1 + gegner.size())
-			{
-				i++;
 			}
 		}
 		else {
@@ -323,7 +333,6 @@ int screen_4::Run(sf::RenderWindow &app)
 			}
 			waveRunning = false;
 		}
-		//std::vector<Einheit*> test = gegner1.isInRange(&türme);
 
 		drawTürme(&app);
 
@@ -338,30 +347,41 @@ int screen_4::Run(sf::RenderWindow &app)
 		app.draw(gameOverMask);
 		app.draw(gameOver);
 
-		
-
 		if (gegner.size()>0)
 			drawGegner(&app);
 		app.display();
-		std::vector<Einheit*> angreiffendeEinheiten;
-		if (gegner.size()>0)
+
+		angreiffendeEinheiten;
+		if (gegner.size() > 0){
 			for (int k = 0; k < gegner.size(); k++)
 			{
 				angreiffendeEinheiten = gegner[k]->isInRange(&türme);
 				if (angreiffendeEinheiten.size() > 0)
 				{
-					gegner[k]->spawn(karte->getPositionen()[0][0]);
+
 					for (int j = 0; j < angreiffendeEinheiten.size(); j++)
 					{
-						angreiffendeEinheiten[j]->angriff(gegner[k]);
-						löscheToteEinheiten();
+						int attackTime = angreiffendeEinheiten[j]->getAttackClock().getElapsedTime().asSeconds();
+						if (attackTime >= angreiffendeEinheiten[j]->getSpeed() && !gegner[k]->getTot())
+						{
+							if (angreiffendeEinheiten[j]->angriff(gegner[k]))
+							{
+								kills++;
+							}
+							angreiffendeEinheiten.erase(angreiffendeEinheiten.begin() + j);
+						}
 					}
-					//i = 0;
 				}
 			}
+		}
+		if (kills == gegner.size()&& kills >0)
+		{
+			löscheToteEinheiten();
+		}
 	}
 
 	löschePositionen();
+	löscheShapes();
 	delete karte;
 	karte = 0;
 
@@ -400,21 +420,25 @@ void screen_4::drawMap(sf::RenderWindow *app)
 void screen_4::drawGegner(sf::RenderWindow *app)
 {
 	for (int j = 0; j < gegner.size(); j++){
-		
-		enemy->setPosition(gegner[j]->getPosition()->getXCord() * POSGRÖßE, gegner[j]->getPosition()->getYCord() * POSGRÖßE + headerHeight);
-		enemy->setFillColor(sf::Color::Red);
-
-		app->draw(*enemy);
+		if (!gegner[j]->getTot())
+		{
+			enemy->setPosition(gegner[j]->getPosition()->getXCord() * POSGRÖßE, gegner[j]->getPosition()->getYCord() * POSGRÖßE + headerHeight);
+			enemy->setFillColor(sf::Color::Red);
+			app->draw(*enemy);
+		}
 	}
 }
 
 void screen_4::drawTürme(sf::RenderWindow *app)
 {
 	for (int j = 0; j < türme.size(); j++){
-		tower->setPosition(turm1->getPosition()->getXCord() * POSGRÖßE, turm1->getPosition()->getYCord() * POSGRÖßE + headerHeight);
-		tower->setFillColor(sf::Color::Magenta);
+		if (!türme[j]->getTot())
+		{
+			tower->setPosition(turm1->getPosition()->getXCord() * POSGRÖßE, turm1->getPosition()->getYCord() * POSGRÖßE + headerHeight);
+			tower->setFillColor(sf::Color::Magenta);
 		
-		app->draw(*tower);
+			app->draw(*tower);
+		}
 	}
 }
 
@@ -432,41 +456,39 @@ void screen_4::löschePositionen()
 
 void screen_4::löscheToteEinheiten(){
 	//lösche türme
-	for (int i = 0; i < türme.size() - 1; i++)
+	int size = türme.size();
+	for (int i = 0; i < size - 1; i++)
 	{
-		if (türme[i]->getTot())
-		{
-			delete türme[i];
-			türme[i] = 0;
-			türme.erase(türme.begin() + i);
-		}
+		delete türme[0];
+		türme[0] = 0;
+		türme.erase(türme.begin());
 	}
 	//lösche gegner	
-	for (int i = 0; i < gegner.size(); i++)
+	size = gegner.size();
+	for (int i = 0; i < size; i++)
 	{
-		if (gegner[i]->getTot())
-		{
-			delete gegner[i];
-			gegner[i] = 0;
-			gegner.erase(gegner.begin()+i);
-		}
+		delete gegner[0];
+		gegner[0] = 0;
+		gegner.erase(gegner.begin());
 	}
 }
 
 void screen_4::löscheAlleEinheiten(){
 	//lösche türme
-	for (int i = 0; i < türme.size() - 1; i++)
+	int size = türme.size();
+	for (int i = 0; i < türme.size(); i++)
 	{
-		delete türme[i];
-		türme[i] = 0;
-		türme.erase(türme.begin() + i);
+		delete türme[0];
+		türme[0] = 0;
+		türme.erase(türme.begin());
 	}
 	//lösche gegner	
-	for (int i = 0; i < gegner.size() - 1; i++)
+	size = gegner.size();
+	for (int i = 0; i < gegner.size(); i++)
 	{
-		delete gegner[i];
-		gegner[i] = 0;
-		gegner.erase(gegner.begin() + i);
+		delete gegner[0];
+		gegner[0] = 0;
+		gegner.erase(gegner.begin());
 	}
 }
 void screen_4::initShapes()
@@ -478,4 +500,12 @@ void screen_4::initShapes()
 
 	tower = new sf::RectangleShape(sf::Vector2f(POSGRÖßE, POSGRÖßE));
 	enemy = new sf::RectangleShape(sf::Vector2f(POSGRÖßE, POSGRÖßE));
+}
+
+void screen_4::löscheShapes()
+{
+	delete field;
+	delete tower;
+	delete enemy;
+	tempPos = 0;
 }

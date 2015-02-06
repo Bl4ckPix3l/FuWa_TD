@@ -61,7 +61,6 @@ Map::Map(const char*filename)
 		}
 		positionen.push_back(row);
 	}
-	initWegfindung();
 }
 
 Map::Map()
@@ -187,6 +186,13 @@ void Map::addNachbar(Position *pos, Position *pVater)
 
 void  Map::initWegfindung()
 {	
+	for (int i = 0; i < positionen.size(); i++)
+	{
+		for (int j = 0; j < positionen[0].size(); j++)
+		{
+			positionen[i][j]->setStatus(0);
+		}
+	}
 	start->setEnfernungStart(0);
 	start->setWert(sqrt(pow(ziel->getXCord() - start->getXCord(), 2) + pow(ziel->getYCord() - start->getYCord(), 2)));
 	start->setStatus(1);

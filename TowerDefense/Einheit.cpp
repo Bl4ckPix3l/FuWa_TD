@@ -55,9 +55,12 @@ std::vector<Einheit*> Einheit::isInRange(std::vector<Einheit*> *pEinheiten)
 }
 
 
-void Einheit::angriff(Einheit *angriffsZiel)
+bool Einheit::angriff(Einheit *angriffsZiel)
 {
-	angriffsZiel->setLeben(angriffsZiel->getLeben() - angriffsWert);
+	bool kill;
+	kill = angriffsZiel->setLeben(angriffsZiel->getLeben() - angriffsWert);
+	attackClock.restart();
+	return kill;
 }
 Position *Einheit::getPosition()
 {
@@ -75,9 +78,17 @@ bool Einheit::getTot()
 {
 	return tot;
 }
+int Einheit::getSpeed()
+{
+	return speed;
+}
 std::vector<Position*> Einheit::getInRange()
 {
 	return inRange;
+}
+sf::Clock Einheit::getAttackClock()
+{
+	return attackClock;
 }
 void Einheit::setRange(int pRange)
 {
@@ -87,16 +98,22 @@ void Einheit::setAngriff(int pAngriff)
 {
 	angriffsWert = pAngriff;
 }
-void Einheit::setLeben(int pLeben)
+bool Einheit::setLeben(int pLeben)
 {
 	leben = pLeben;
 	if (leben <= 0)
 	{
 		setTot(true);
+		return true;
 	}
+	return false;
 }
 void Einheit::setTot(bool pTot)
 {
 	tot = pTot;
 }
 
+void Einheit::setSpeed(int pSpeed)
+{
+	speed = pSpeed;
+}
