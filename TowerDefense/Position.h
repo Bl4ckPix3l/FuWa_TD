@@ -11,6 +11,8 @@ private:
 	int size;
 	double berechneAbstand(Position *ziel);
 
+	static int posSize;
+
 	//wegfindung
 	Position *vater;
 	double entfernungStart =0;
@@ -24,6 +26,8 @@ public:
 	bool getBebaubar();
 	int getXCord();
 	int getYCord();
+	int getXCordReal();
+	int getYCordReal();
 	int getSize();
 	double getWert();
 	int getStatus();

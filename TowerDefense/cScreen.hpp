@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "Map.h"
 
 class cScreen
 {
@@ -17,6 +18,8 @@ protected:
 private: 
 	sf::Sound sButton;
 	sf::SoundBuffer buffer;
+	sf::Texture Texture;
+	std::string bgMain = "menuMain.jpg";
 	
 public:
 
@@ -39,6 +42,7 @@ public:
 	void setSpriteCenter(sf::Sprite &sprite, float yPosition);
 	void setButtonCenter(sf::RectangleShape &rec, float yPosition);
 	int onButtonHover(sf::Event Event, std::vector<sf::RectangleShape*>  menuListButton, std::string type);
+	Position* onFieldHover(sf::Event Event, Map* karte, std::string type);
 	void playButtonSound();
 	void playSound(std::string type);
 	void initSounds();
@@ -46,7 +50,8 @@ public:
 	void initColors();
 	sf::Color getColor(std::string name);
 	sf::Font getFont();
-
+	void setBgTexture(std::string name);
+	void drawTexture(sf::RenderWindow *app);
 };
 
 #endif

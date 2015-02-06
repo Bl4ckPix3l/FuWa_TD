@@ -44,3 +44,6 @@ TowerDefense.sdf
 TowerDefense/TowerDefense.vcxproj
 TowerDefense/TowerDefense.vcxproj.filters
 TowerDefense/TowerDefense.vcxproj
+Debug/TowerDefense.exe
+Debug/TowerDefense.ilk
+Debug/TowerDefense.pdb
