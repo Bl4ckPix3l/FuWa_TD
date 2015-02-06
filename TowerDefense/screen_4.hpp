@@ -41,7 +41,7 @@ private:
 	sf::Text lifeText;
 	sf::Text goldText;
 	sf::Clock waveClock;
-
+	sf::Clock moveClock;
 
 	Map *karte;
 	sf::Sprite feldSprite;
@@ -50,8 +50,9 @@ private:
 	sf::RenderWindow *window;
 	std::vector<Einheit*> türme;
 	std::vector<BodenGegner*> gegner;
-	BodenGegner *gegner1;
 	Turm *turm1;
+	Turm *turm2;
+	Turm *turm3;
 	void drawMap(sf::RenderWindow *app);
 	void drawGegner(sf::RenderWindow *app);
 	void drawTürme(sf::RenderWindow *app);
@@ -59,7 +60,8 @@ private:
 	void löscheToteEinheiten();
 	void löscheAlleEinheiten();
 
-
+	int movingEnemy;
+	int pathCounter;
 public:
 	screen_4(void);
 	virtual int Run(sf::RenderWindow &App);
