@@ -7,7 +7,6 @@
 #include <vector>
 #include "Position.h"
 
-
 class Map
 {
 private:
@@ -23,7 +22,6 @@ private:
 	std::vector<Position*> queue;
 	std::vector<Position*> path;
 	void berechneWeg();
-	
 	void addNachbar(Position *pos, Position *pVater);
 	double berechneAbstand();
 	void sortiereVector();

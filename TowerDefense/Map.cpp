@@ -61,7 +61,6 @@ Map::Map(const char*filename)
 		}
 		positionen.push_back(row);
 	}
-	initWegfindung();
 }
 
 Map::Map()

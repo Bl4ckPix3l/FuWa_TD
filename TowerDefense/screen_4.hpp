@@ -38,11 +38,12 @@ private:
 	int seconds = 0;
 
 	bool wavesEnded = false;
-
+	int kills;
 	sf::Text waveText;
 	sf::Text lifeText;
 	sf::Text goldText;
 	sf::Clock waveClock;
+	sf::Clock moveClock;
 
 	std::vector<sf::CircleShape *> towerIcons;
 	std::vector<sf::RectangleShape *> enemyMapIcon;
@@ -70,12 +71,17 @@ private:
 	void löscheToteEinheiten();
 	void löscheAlleEinheiten();
 	void initShapes();
+	void löscheShapes();
+	std::vector<Einheit*> angreiffendeEinheiten;
 
 	sf::RectangleShape* field;
 	sf::CircleShape* tower;
 	sf::RectangleShape* enemy;
 	Position *tempPos;
 
+	int movingEnemy;
+	int pathCounter;
+	
 public:
 	screen_4(void);
 	virtual int Run(sf::RenderWindow &App);
