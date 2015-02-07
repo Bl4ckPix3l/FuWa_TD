@@ -28,6 +28,10 @@ bool Position::getBebaubar()
 {
 	return bebaubar;
 }
+bool Position::getBebaut()
+{
+	return bebaut;
+}
 int Position::getXCord()
 {
 	return xCord;
@@ -67,6 +71,10 @@ Position *Position::getVater()
 void Position::setBebaubar(bool pBebaubar)
 {
 	bebaubar = pBebaubar;
+}
+void Position::setBebaut(bool pBebaut)
+{
+	bebaut = pBebaut;
 }
 void Position::setXCord(int pXCord)
 {

@@ -34,7 +34,7 @@ private:
 	int milli = 0;
 
 	int towers = 3;
-
+	
 	int seconds = 0;
 
 	bool wavesEnded = false;
@@ -55,7 +55,7 @@ private:
 	sf::Sprite gegnerSprite;
 	sf::Sprite turmSprite;
 	sf::RenderWindow *window;
-	std::vector<Einheit*> türme;
+	std::vector<Turm*> türme;
 	std::vector<BodenGegner*> gegner;
 	BodenGegner *gegner1;
 	Turm *turm1;
@@ -68,13 +68,13 @@ private:
 	void löscheAlleEinheiten();
 	void initShapes();
 	void screen_4::löscheShapes();
-	std::vector<Einheit*> angreiffendeEinheiten;
+	std::vector<Turm*> angreiffendeEinheiten;
 
 	sf::RectangleShape* field;
 	sf::RectangleShape* tower;
 	sf::RectangleShape* enemy;
 	Position *tempPos;
-
+	Turm* newTower;
 	int movingEnemy;
 	int pathCounter;
 	

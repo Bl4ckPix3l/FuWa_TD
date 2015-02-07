@@ -61,6 +61,7 @@ Map::Map(const char*filename)
 		}
 		positionen.push_back(row);
 	}
+	initWegfindung();
 }
 
 Map::Map()
@@ -146,7 +147,8 @@ void  Map::berechneWeg()
 		{ 
 			addNachbar(positionen[aktPos->getYCord() + 1][aktPos->getXCord()], ptrAktPos);
 		}
-		sortiereVector();
+		if (queue.size()>0)
+			sortiereVector();
 	}
 
 	if (path.size() != 0)
@@ -186,11 +188,16 @@ void Map::addNachbar(Position *pos, Position *pVater)
 
 void  Map::initWegfindung()
 {	
+	queue.clear();
+	path.clear();
 	for (int i = 0; i < positionen.size(); i++)
 	{
 		for (int j = 0; j < positionen[0].size(); j++)
 		{
 			positionen[i][j]->setStatus(0);
+			positionen[i][j]->setEnfernungStart(0);
+			positionen[i][j]->setVater(0);
+			positionen[i][j]->setWert(0);
 		}
 	}
 	start->setEnfernungStart(0);

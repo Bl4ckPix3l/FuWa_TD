@@ -6,6 +6,7 @@ class Position
 {
 private:
 	bool bebaubar;
+	bool bebaut;
 	int xCord;
 	int yCord;
 	int size;
@@ -24,6 +25,7 @@ public:
 	~Position();
 	void berechneWert(Position *ziel);
 	bool getBebaubar();
+	bool getBebaut();
 	int getXCord();
 	int getYCord();
 	int getXCordReal();
@@ -34,6 +36,7 @@ public:
 	Position *getVater();
 	double getEntfernungStart();
 	void setBebaubar(bool pBebaubar);
+	void setBebaut(bool pBebaut);
 	void setXCord(int pXCord);
 	void setYCord(int pYCord);
 	void setSize(int pSize);
