@@ -31,8 +31,8 @@ int screen_2::Run(sf::RenderWindow &App)
 		return (-1);
 	}
 
-	headline.setColor(sf::Color(208, 181, 126));
-	headline.setFont(font);
+	headline.setColor(getColor("default"));
+	headline.setFont(*getMainFont());
 	headline.setCharacterSize(32);
 	headline.setPosition({ 0, 0 });
 	headline.setString("Einstellungen");

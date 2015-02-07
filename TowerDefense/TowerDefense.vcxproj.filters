@@ -24,15 +24,6 @@
     <ClCompile Include="screen_0.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="screen_1.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="screen_2.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="screen_3.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="screen_4.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -54,6 +45,27 @@
     <ClCompile Include="Turm.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\sqlite\sqlite3.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\sqlite\SQLLiteWrapper.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="screenRace.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="screenMap.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="functions.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="screens.hpp">
@@ -62,16 +74,7 @@
     <ClInclude Include="screen_0.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="screen_1.hpp">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="cScreen.hpp">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="screen_2.hpp">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="screen_3.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="screen_4.hpp">
@@ -99,6 +102,27 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Turm.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\sqlite\sqlite3.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\sqlite\SQLLiteWrapper.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="screenRace.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="screenMap.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

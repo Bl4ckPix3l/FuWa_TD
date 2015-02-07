@@ -1,0 +1,11 @@
+mauer.png bauplatz.png
+o o o o s o o o o o o o o o o o
+o o o o o o o o o o o o o o o o
+x o o o o o o o o o o o o o o o
+o o o o o o o o o o o o o o o o
+o o o o x x x x o o o o o o o o
+o o o o o o o o o o o o o o o o
+o o o o o o o o o o o o o o o o
+o o o x x o o x x x x o o o o o
+o o o o x o o x z o o o o o o o
+o o o o o o o o o o o o o o o o

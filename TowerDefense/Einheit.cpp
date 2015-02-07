@@ -87,6 +87,11 @@ void Einheit::setAngriff(int pAngriff)
 {
 	angriffsWert = pAngriff;
 }
+
+int Einheit::getAngriff()
+{
+	return angriffsWert;
+}
 void Einheit::setLeben(int pLeben)
 {
 	leben = pLeben;
@@ -98,5 +103,21 @@ void Einheit::setLeben(int pLeben)
 void Einheit::setTot(bool pTot)
 {
 	tot = pTot;
+}
+
+void Einheit::setShape(int pShape){
+	shape = pShape;
+}
+
+int Einheit::getShape(){
+	return shape;
+}
+
+void Einheit::setColor(std::string pColor){
+	color = pColor;
+}
+
+std::string Einheit::getColor(){
+	return color;
 }
 
