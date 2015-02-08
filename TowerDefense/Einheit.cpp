@@ -38,6 +38,20 @@ double Einheit::getSpeed()
 	return speed;
 }
 
+void Einheit::setRange(int pRange)
+{
+	range = pRange;
+}
+void Einheit::setAngriff(int pAngriff)
+{
+	angriffsWert = pAngriff;
+}
+
+double Einheit::getAngriff()
+{
+	return angriffsWert;
+}
+
 bool Einheit::setLeben(double pLeben)
 {
 	leben = pLeben;
@@ -57,7 +71,25 @@ void Einheit::setTot(bool pTot)
 	tot = pTot;
 }
 
+
+void Einheit::setShape(int pShape){
+	shape = pShape;
+}
+
+int Einheit::getShape(){
+	return shape;
+}
+
+void Einheit::setColor(std::string pColor){
+	color = pColor;
+}
+
+std::string Einheit::getColor(){
+	return color;
+}
+
 void Einheit::setSpeed(double pSpeed)
 {
 	speed = pSpeed;
 }
+

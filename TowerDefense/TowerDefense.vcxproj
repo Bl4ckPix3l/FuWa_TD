@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Torsten\Desktop\SFML-2.2\include;C:\SQLLight;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SQLLight;C:\Users\Torsten\Desktop\SFML-2.2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -56,7 +56,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Torsten\Desktop\SFML-2.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SQLLight;C:\Users\Torsten\Desktop\SFML-2.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -89,32 +89,40 @@
     <ClCompile Include="BodenGegner.cpp" />
     <ClCompile Include="cScreen.cpp" />
     <ClCompile Include="Einheit.cpp" />
+    <ClCompile Include="functions.cpp" />
     <ClCompile Include="Gegner.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="screen_0.cpp" />
-    <ClCompile Include="screen_1.cpp" />
-    <ClCompile Include="screen_2.cpp" />
-    <ClCompile Include="screen_3.cpp" />
+    <ClCompile Include="screenRace.cpp" />
+    <ClCompile Include="screenMap.cpp" />
     <ClCompile Include="screen_4.cpp" />
+    <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="SQLLiteWrapper.cpp" />
     <ClCompile Include="Turm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BodenGegner.h" />
     <ClInclude Include="cScreen.hpp" />
     <ClInclude Include="Einheit.h" />
+    <ClInclude Include="functions.h" />
     <ClInclude Include="Gegner.h" />
     <ClInclude Include="globals.hpp" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="screens.hpp" />
     <ClInclude Include="screen_0.hpp" />
-    <ClInclude Include="screen_1.hpp" />
-    <ClInclude Include="screen_2.hpp" />
-    <ClInclude Include="screen_3.hpp" />
+    <ClInclude Include="screenRace.hpp" />
+    <ClInclude Include="screenMap.hpp" />
     <ClInclude Include="screen_4.hpp" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="SQLLiteWrapper.h" />
     <ClInclude Include="Turm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,59 +1,70 @@
-﻿Der Buildvorgang wurde am 06.02.2015 21:35:02 gestartet.
-     1>Projekt "C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
+﻿Der Buildvorgang wurde am 08.02.2015 01:35:42 gestartet.
+     1>Projekt "C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\TowerDefense\TowerDefense.vcxproj" auf Knoten "2", Build Ziel(e).
      1>ClCompile:
-         E:\Programme\VC\bin\CL.exe /c /I"C:\Users\Torsten\Desktop\SFML-2.2\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt screen_4.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SQLLight /I"C:\Users\Torsten\Desktop\SFML-2.2\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp screen_4.cpp
          screen_4.cpp
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\gegner.h(8): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\turm.h(7): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(16): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 e:\programme\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(22): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 e:\programme\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(28): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 e:\programme\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(33): warning C4244: 'Initialisierung': Konvertierung von 'double' in 'int', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(46): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 e:\programme\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(201): warning C4244: 'Initialisierung': Konvertierung von 'double' in 'float', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(234): warning C4244: '=': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(327): warning C4244: '=': Konvertierung von 'double' in 'int', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(330): warning C4244: '=': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(339): warning C4244: '=': Konvertierung von 'double' in 'int', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(371): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(375): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(410): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(426): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(432): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(458): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(460): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(463): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(480): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(482): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(491): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(492): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(501): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(503): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(514): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(526): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(539): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
-     1>c:\users\eric\documents\visual studio 2013\projects\fuwa_td\towerdefense\screen_4.cpp(546): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(13): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(19): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(25): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(30): warning C4244: 'Initialisierung': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(43): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356): Siehe Deklaration von 'sprintf'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(209): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(269): warning C4244: '=': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(336): warning C4244: 'Argument': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(341): warning C4244: 'Argument': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(364): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(414): warning C4244: '=': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(417): warning C4244: '=': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(425): warning C4244: '=': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(449): warning C4244: 'Argument': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(451): warning C4244: 'Argument': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(472): warning C4244: 'Argument': Konvertierung von 'double' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(494): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(536): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(553): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(559): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(561): warning C4244: 'Initialisierung': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(600): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(602): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(605): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(628): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(634): warning C4244: 'Argument': Konvertierung von 'double' in 'float', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(635): warning C4244: 'Argument': Konvertierung von 'double' in 'float', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(646): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(650): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(663): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(665): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(688): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(696): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+         Code wird generiert...
+     1>c:\users\torsten\desktop\fh\medienprogrammieren\projekt\fuwa_td\towerdefense\screen_4.cpp(723): warning C4715: "screen_4::getResultsValue": Nicht alle Steuerelementpfade geben einen Wert zurück.
+         Überspringen... (keine relevanten Änderungen gefunden)
+         Main.cpp
        Link:
-         E:\Programme\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-audio-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\Debug\TowerDefense.lib" /MACHINE:X86 Debug\BodenGegner.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Eric\Documents\Visual Studio 2013\Projects\SFML2.2vc12\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-audio-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.lib" /MACHINE:X86 Debug\BodenGegner.obj
          Debug\cScreen.obj
          Debug\Einheit.obj
+         Debug\functions.obj
          Debug\Gegner.obj
          Debug\Main.obj
          Debug\Map.obj
+         Debug\Database.obj
+         Debug\Model.obj
          Debug\Position.obj
          Debug\screen_0.obj
-         Debug\screen_1.obj
-         Debug\screen_2.obj
-         Debug\screen_3.obj
+         Debug\screenRace.obj
+         Debug\screenMap.obj
          Debug\screen_4.obj
+         Debug\sqlite3.obj
+         Debug\SQLLiteWrapper.obj
          Debug\Turm.obj
-         TowerDefense.vcxproj -> C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\Debug\TowerDefense.exe
-     1>Die Erstellung des Projekts "C:\Users\Eric\Documents\Visual Studio 2013\Projects\FuWa_TD\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
+         TowerDefense.vcxproj -> C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\Debug\TowerDefense.exe
+     1>Die Erstellung des Projekts "C:\Users\Torsten\Desktop\FH\Medienprogrammieren\Projekt\FuWa_TD\TowerDefense\TowerDefense.vcxproj" ist abgeschlossen, Build Ziel(e).
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:01.88
+Verstrichene Zeit 00:00:04.02

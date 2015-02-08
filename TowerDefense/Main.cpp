@@ -16,20 +16,16 @@ int main()
 	App.setMouseCursorVisible(true);
 
 	//Screens preparations
-	
-	
 	screen_0 s0;
-	screen_1 s1;
-	screen_2 s2;
-	screen_3 s3;
-	screen_4 s4;
+	screenRace s1;
+	screenMap s2;
+	screen_4 s3;
 	Screens.push_back(&s0);
 	Screens.push_back(&s1);
 	Screens.push_back(&s2);
 	Screens.push_back(&s3);
-	Screens.push_back(&s4);
 	
-	
+	// Screen loop
 	while (screen >= 0)
 	{
 		screen = Screens[screen]->Run(App);

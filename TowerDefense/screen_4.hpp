@@ -13,6 +13,8 @@
 #include "Turm.h"
 #include "Einheit.h"
 #include "globals.hpp"
+#include "functions.h"
+#include "Model.h"
 
 class screen_4 : public cScreen
 {
@@ -20,11 +22,9 @@ private:
 
 	const float headerHeight = 60.f;
 
-	int waves = 30;
+	int waves = 0;
 	int waveCount = 0;
-	int waveTimeEnd = 5000;
-
-	int enemySpawn = 5;
+	int waveTimeEnd = 10000;
 
 	int life = 100;
 
@@ -45,11 +45,15 @@ private:
 	sf::Clock waveClock;
 	sf::Clock moveClock;
 
-	std::vector<sf::RectangleShape *> towerIcons;
+	std::vector<sf::CircleShape *> towerIcons;
 	std::vector<sf::RectangleShape *> enemyMapIcon;
 	std::vector<sf::RectangleShape *> towerMapIcon;
 	std::vector<sf::RectangleShape *> mapFields;
 	
+	std::map<std::string, std::string>* dbTower;
+	std::vector<std::map<std::string, std::string>*> dbTowers;
+	std::vector<std::map<std::string, std::string>*> dbWaves;
+
 	Map *karte;
 	sf::Sprite feldSprite;
 	sf::Sprite gegnerSprite;
@@ -67,11 +71,12 @@ private:
 	void löscheToteEinheiten();
 	void löscheAlleEinheiten();
 	void initShapes();
-	void screen_4::löscheShapes();
+
 	std::vector<Turm*> angreiffendeEinheiten;
+	void löscheShapes();
 
 	sf::RectangleShape* field;
-	sf::RectangleShape* tower;
+	sf::CircleShape* tower;
 	sf::RectangleShape* enemy;
 	Position *tempPos;
 	Turm* newTower;
@@ -93,4 +98,6 @@ public:
 	void increaseGold(int value);
 	void decreaseGold(int value);
 	bool isGoldAvailable(int value);
+
+	std::string screen_4::getResultsValue(std::map<std::string, std::string>* map, std::string name);
 };

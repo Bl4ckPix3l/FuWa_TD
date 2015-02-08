@@ -13,5 +13,7 @@ bool isMusicOn;
 #define SCREENWIDTH 1024
 #define SCREENHEIGHT 756
 
+#define POSGRÖßE 64
+
 
 #endif // _GLOBALS_H_
